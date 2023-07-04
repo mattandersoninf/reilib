@@ -2,6 +2,17 @@
 
 //test comment* 
 
+/* API endpoints
+
+1. GET ALL- grab information from the database
+2. POST - create new inforamtion in the databse
+3. GET - grab a single pice of inforamtion from the databsae
+4. DELETE - remove inforamtion from the database
+5. PATCH - update inforamtion in the database
+
+*/
+
+
 require("dotenv").config
 
 const express = require('express');
@@ -13,6 +24,13 @@ const port = 3000;
 // Connection URL and database name
 const url = 'mongodb://localhost:27017';
 const dbName = 'house_prices';
+
+
+// middleware
+app.use((req, res, next) => {
+    console.log(req.path, req.method)
+    next()
+})
 
 /*
 // Connect to MongoDB server

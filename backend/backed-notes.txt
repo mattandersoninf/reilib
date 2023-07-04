@@ -1,0 +1,19 @@
+
+
+1. server.js
+    a. User profiles
+        - email
+        - password
+        - admin/user
+        i. admin
+            - view site metrics
+            - add and delte user
+        ii. users
+            - veiw properties/investment
+    b. properties
+        - address
+        - listing house
+        - bed
+        - bath
+        - sq ft
+        - map view link (less important at this time)
