@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import { useState } from 'react';
 import './App.css';
 
+
 function App() {
 
   const title = 'REILib';
@@ -18,7 +19,7 @@ function App() {
     case 'home':
       pageContent = (
         <>
-          <h1>Welcome to my website!</h1>
+          <h1>REI Library</h1>
           <p>This is some content on my website.</p>
         </>
       );
@@ -27,7 +28,7 @@ function App() {
       pageContent = (
         <>
           <h1>About</h1>
-          <p>This is the about page of my website.</p>
+          <p>The mssion of this website is to allow investors to track investment opportuinites and provide insight into the parameters that make good optimal deals.</p>
         </>
       );
       break;
