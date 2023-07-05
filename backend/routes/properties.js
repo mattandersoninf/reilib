@@ -19,9 +19,30 @@ const propertiesRoutes = require('./routes/properties')
 
 const router = express.Router()
 
+//GET ALL properties
+router.get('/', (req,res) => {
+    res.json({mssg:"GET all properties"})
+})
 
+//GET a single property
+router.get('/:id', (req,res) => {
+    res.json({mssg:"GET a single property"})
+})
 
-//routes
-router.get('/', () => {})
+// POST a property
+router.post('/', (req,res) =>{
+    res.json({mssg:"POST a property"})
+})
+
+// DELETE a property
+router.delete('/:id', (req,res) => {
+    res.json({mssg:"DELETE a property"})
+})
+
+//UPDATE a property
+router.patch('/id', (req,res) => {
+    res.json({mssg:"GET all properties"})
+})
+
 
 module.exports = router

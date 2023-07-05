@@ -27,6 +27,10 @@ const dbName = 'house_prices';
 
 
 // middleware
+
+//executes a task described in properties.js
+app.use(express.json())
+
 app.use((req, res, next) => {
     console.log(req.path, req.method)
     next()
