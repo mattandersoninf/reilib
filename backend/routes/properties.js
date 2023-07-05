@@ -20,9 +20,21 @@ const propertiesRoutes = require('./routes/properties')
 const router = express.Router()
 
 //GET ALL properties
-router.get('/', (req,res) => {
-    res.json({mssg:"GET all properties"})
-})
+app.get('/properties', (req, res) => {
+    // Get properties collection
+    const propertiesCollection = db.collection('properties');
+
+    // Find all properties
+    propertiesCollection.find().toArray((err, properties) => {
+      if (err) {
+        console.error('Error fetching properties:', err);
+        res.status(500).send('Internal Server Error');
+        return;
+      }
+
+      res.json(properties);
+    });
+  });
 
 //GET a single property
 router.get('/:id', (req,res) => {
