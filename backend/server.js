@@ -13,18 +13,17 @@
 */
 
 
-require("dotenv").config
+require('dotenv').config();
 
 const express = require('express');
-const MongoClient = require('mongodb').MongoClient;
+const { MongoClient } = require('mongodb');
+
 
 const app = express();
-const port = process.env.PORT;
 
 // Connection URL and database name
 const url = process.env.MONG_URI;
 const dbName = 'house_prices';
-
 
 // middleware
 
@@ -36,21 +35,27 @@ app.use((req, res, next) => {
     next()
 })
 
-
+ 
 // Connect to MongoDB server
-MongoClient.connect(url, (err, client) => {
+MongoClient.connect(url, { useUnifiedTopology: true }, (err, client) => {
   if (err) {
     console.error('Error connecting to MongoDB:', err);
     return;
   }
 
-  console.log('Connected to MongoDB server');
-
   const db = client.db(dbName);
-  
 
-  // Start the server
-  app.listen(process.env.PORT, () => {
-    console.log(`Server listening on port ${port}`);
-  });
+  // Perform database operations here
+
+  // Close the MongoDB connection
+  client.close();
+}).then(() =>{
+  app.listen(process.env.PORT, () =>{
+    console.log('connected to db and listening on port'+process.env.PORT)
+  })
+}
+).catch((error) => {
+  console.log(error)
 });
+
+

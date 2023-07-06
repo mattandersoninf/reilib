@@ -12,8 +12,8 @@
             - veiw properties/investment
     b. properties
         - address
-        - listing house
         - bed
         - bath
         - sq ft
         - map view link (less important at this time)
+        - listing date
