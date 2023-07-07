@@ -43,21 +43,25 @@
             - BathroomsTotalInteger
             - BedroomsTotal
             - (optional) Cap Rate
-            - City
+            - City**
             - Close Date
             - Close Price
-            - Country
+            - Country **
             - Days On Market
             - ListingId
+            - ListPrice
+            - LivingArea (sq ft)**
             - NetOperatingIncome
-            - PostalCOde
+            - OnMarketDate
+            - PostalCode **
             - PropertyType
             - (optional) PropertySubType
             - RentControlYN
-            - StateOrProvince
+            - StateOrProvince **
             - StateRegion
-            - StreetName
-            - StreetNumber
+            - StreetName**
+            - StreetNumber**
+            - TaxAnnualAmount **
 
 
 

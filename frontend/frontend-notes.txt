@@ -5,21 +5,21 @@
     INPUTS
         Property and Loan Information
             - Property inforamtion
-                Address
-                City/State/Zip
-                MLS #
-                Square Feet:
+                Address **
+                City/State/Zip **
+                MLS # **
+                Square Feet **
                 Other Notes
             - Purchase inforamtion
-                Purchase Price*
-                Building Cost
-                Land Cost
-                After Renovation Value*
-                Annual Property Taxes*
+                Purchase Price 
+                Building Cost (listing price) **
+                Land Cost (optional)
+                After Renovation Value
+                Annual Property Taxes **
                 Estimated Renovation Costs
                 Amortization Period
             - Loan Details
-                Cash Purchase?*
+                Cash Purchase? (y/n)
                 Down Payment (as percentage)
                 or- Fixed down payment amount
                 Loan Amount
@@ -41,9 +41,9 @@
                 Total
         Income and Expenses
             - Total Gross Monthly Income (Market Estimate)
-                - Rent
-                - Other Income
-                - Total (sum of total gross monthly income)
+                Rent
+                Other Income
+                Total
             -Future Assumptions
                 Rent Escalation (%)	
                 Market Appreciation (%)	
@@ -56,7 +56,7 @@
                 Trash
                 HOA
                 Monthly Insurance
-                Property Taxes (calculated)
+                Property Taxes (calculated) **
                 Other Monthly Expenses
                 Vacancy (%)
                 Repairs and Maintenance (%)
