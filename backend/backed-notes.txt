@@ -11,9 +11,55 @@
         ii. users
             - veiw properties/investment
     b. properties
-        - address
-        - bed
-        - bath
-        - sq ft
-        - map view link (less important at this time)
-        - listing date
+        - 1. refer to RESO WEB API
+            - listingID
+            - address
+            - bed
+            - bath
+            - living area (sq ft)
+            - map view link (less important at this time)
+            - listing date (Availability Datee)
+            - ListPrice (tax assessed )
+                - may need ot look into PriceChangeStamp prop from Zestimate parameters
+            - year built
+            - bathroomsFull
+            - bathroomsPartial
+            - RoomsTotal
+            - StreetName
+            - Street Number
+            - Township
+            - CloseDate
+            - StateRegion/StateOrProvince
+            - PropertyType
+            - OriginalListingPrice
+            - Cap Rate (can be provided)
+            - ListPrice
+            - PostalCode
+            - (optional) ArchitecturalStyle
+            - UnparsedAddress
+        - 2. refer to Zestimate API (Zillows custom data)
+            - 
+        - 3. Bridge Web API (MLS data)
+            - BathroomsTotalInteger
+            - BedroomsTotal
+            - (optional) Cap Rate
+            - City
+            - Close Date
+            - Close Price
+            - Country
+            - Days On Market
+            - ListingId
+            - NetOperatingIncome
+            - PostalCOde
+            - PropertyType
+            - (optional) PropertySubType
+            - RentControlYN
+            - StateOrProvince
+            - StateRegion
+            - StreetName
+            - StreetNumber
+
+
+
+
+
