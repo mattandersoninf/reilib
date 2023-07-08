@@ -6,15 +6,27 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const propertiesSchema =  new Schema({
-    mlsListing: {
+    ListingId: {
         type: String,
         required: true
     },
-    address: {
+    StreetNumber: {
         type: String,
         require:true
     },
-    PropertyType: {
+    StreetName: {
+        type: String,
+        require:true
+    },
+    City: {
+        type: String,
+        require: true
+    },
+    StateOrProvince: {
+        type: String,
+        require:true
+    },
+    PostalCode: {
         type: String,
         require:true
     },
@@ -27,11 +39,22 @@ const propertiesSchema =  new Schema({
         type: Number,
         require:true
     },
-    bed: {
+    BedroomsTotal: {
         type: Number,
         require:true
     },
-
+    BathroomsTotalDecimal: {
+        type: Number,
+        require: true
+    }
+    /*
+    PropertyType: {
+        type: String,
+        require:true
+    },
+    */
 
 
 })
+
+module.exports = mongoose.model('Property', propertySchema)

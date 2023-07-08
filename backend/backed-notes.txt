@@ -40,16 +40,16 @@
         - 2. refer to Zestimate API (Zillows custom data)
             - 
         - 3. Bridge Web API (MLS data)
-            - BathroomsTotalInteger
-            - BedroomsTotal
+            - BathroomsTotalDecimal **
+            - BedroomsTotal **
             - (optional) Cap Rate
-            - City**
+            - City **
             - Close Date
             - Close Price
             - Country **
             - Days On Market
             - ListingId
-            - ListPrice
+            - ListPrice **
             - LivingArea (sq ft)**
             - NetOperatingIncome
             - OnMarketDate

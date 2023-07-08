@@ -5,14 +5,14 @@
     INPUTS
         Property and Loan Information
             - Property inforamtion
-                Address **
-                City/State/Zip **
-                MLS # **
-                Square Feet **
-                Other Notes
+                Address ** (StreetNumber, StreetName)
+                City/State/Zip ** (City, StateOrProvince, PostalCode)
+                MLS # ** (ListingId)
+                Square Feet ** (LivingArea)
+                Other Notes (PropertyType)
             - Purchase inforamtion
                 Purchase Price 
-                Building Cost (listing price) **
+                Building Cost (ListPrice) **
                 Land Cost (optional)
                 After Renovation Value
                 Annual Property Taxes **
