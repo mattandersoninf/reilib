@@ -1,11 +1,10 @@
 // communicate with mongodb server for properties
 
-const { Int32 } = require('mongodb')
 const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
-const propertiesSchema =  new Schema({
+const propertySchema =  new Schema({
     ListingId: {
         type: String,
         required: true
@@ -54,7 +53,6 @@ const propertiesSchema =  new Schema({
     },
     */
 
-
-})
+}, {timestamps: true})
 
 module.exports = mongoose.model('Property', propertySchema)

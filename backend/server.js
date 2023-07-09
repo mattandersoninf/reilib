@@ -16,46 +16,44 @@
 require('dotenv').config();
 
 const express = require('express');
-const { MongoClient } = require('mongodb');
+const propertyRoutes = require('./routes/properties')
+const mongoose = require('mongoose');
 
 
 const app = express();
 
 // Connection URL and database name
 const url = process.env.MONG_URI;
-const dbName = 'house_prices';
+//const dbName = 'house_prices';
 
 // middleware
-
 //executes a task described in properties.js
 app.use(express.json())
-
 app.use((req, res, next) => {
-    console.log(req.path, req.method)
-    next()
+  console.log(req.path, req.method)
+  next()
 })
 
- 
+//routes 
+app.get('/', (req, res) =>{
+  res.json({mssg:'Welcome to the app'})
+})
+
+// routes
+app.use('/api/properties', propertyRoutes)
+
+
 // Connect to MongoDB server
-MongoClient.connect(url, { useUnifiedTopology: true }, (err, client) => {
-  if (err) {
-    console.error('Error connecting to MongoDB:', err);
-    return;
-  }
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
 
-  const db = client.db(dbName);
-
-  // Perform database operations here
-
-  // Close the MongoDB connection
-  client.close();
-}).then(() =>{
-  app.listen(process.env.PORT, () =>{
-    console.log('connected to db and listening on port'+process.env.PORT)
+    app.listen(process.env.PORT, () =>{
+      console.log('connected to db listening on port: '+process.env.PORT)
+    })
+    // Start performing database operations here
   })
-}
-).catch((error) => {
-  console.log(error)
-});
+  .catch((err) => {
+    console.error('Error connecting to MongoDB:', err);
+  });
 
 

@@ -15,12 +15,32 @@ User server functions to modify properites on the webapp
 require('dotenv').config()
 
 const express = require('express')
-const propertiesRoutes = require('./routes/properties')
+const Property = require('../models/propertyModel')
 
 const router = express.Router()
 
+/*
+// TEST ROUTES
+router.get('/', (req,res) => {
+    res.json({mssg:'GET all properties'})
+})
+
+router.get('/:id', (req,res) => {
+    res.json({mssg:'GET a single propertY'})
+})
+
+router.delete('/:id', (req,res) => {
+    res.json({mssg:'DELETE a property'})
+})
+
+router.patch('/:id', (req,res) => {
+    res.json({mssg:'UPDATE a property'})
+})
+*/
+
+
 //GET ALL properties
-app.get('/properties', (req, res) => {
+router.get('/', (req, res) => {
     // Get properties collection
     const propertiesCollection = db.collection('properties');
 
@@ -38,11 +58,25 @@ app.get('/properties', (req, res) => {
 
 //GET a single property
 router.get('/:id', (req,res) => {
+    
+    // const {ListingId, StreetNumber, StreetName, Sity, StateOrProvince, PostalCode, ListPrice, LivingArea, BedroomsTotal, BathroomsTotalDecimal} = req.body
+
     res.json({mssg:"GET a single property"})
 })
 
 // POST a property
-router.post('/', (req,res) =>{
+router.post('/', async(req,res) =>{
+
+    const {ListingId, StreetNumber, StreetName, Sity, StateOrProvince, PostalCode, ListPrice, LivingArea, BedroomsTotal, BathroomsTotalDecimal} = req.body
+
+    try{
+        const property = await Property.create({ListingId, StreetNumber, StreetName, Sity, StateOrProvince, PostalCode, ListPrice, LivingArea, BedroomsTotal, BathroomsTotalDecimal})
+        res.status(200).json(property)
+    } catch (error){
+        console.log('Error posting to server:'+error.message)
+        res.status(400).json({error: error.message})
+    }
+
     res.json({mssg:"POST a property"})
 })
 
