@@ -41,6 +41,10 @@ router.patch('/:id', (req,res) => {
 
 //GET ALL properties
 router.get('/', (req, res) => {
+
+    res.json({mssg: 'GET all properties'})
+    
+    /*
     // Get properties collection
     const propertiesCollection = db.collection('properties');
 
@@ -54,7 +58,9 @@ router.get('/', (req, res) => {
 
       res.json(properties);
     });
-  });
+    */
+
+})
 
 //GET a single property
 router.get('/:id', (req,res) => {
@@ -66,7 +72,7 @@ router.get('/:id', (req,res) => {
 
 // POST a property
 router.post('/', async(req,res) =>{
-
+    // form the entry that you want to put into the mongodb collection
     const {ListingId, StreetNumber, StreetName, Sity, StateOrProvince, PostalCode, ListPrice, LivingArea, BedroomsTotal, BathroomsTotalDecimal} = req.body
 
     try{
@@ -77,7 +83,6 @@ router.post('/', async(req,res) =>{
         res.status(400).json({error: error.message})
     }
 
-    res.json({mssg:"POST a property"})
 })
 
 // DELETE a property
@@ -87,7 +92,7 @@ router.delete('/:id', (req,res) => {
 
 //UPDATE a property
 router.patch('/id', (req,res) => {
-    res.json({mssg:"GET all properties"})
+    res.json({mssg:"UPDATE a property"})
 })
 
 

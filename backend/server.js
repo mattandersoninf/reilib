@@ -1,59 +1,36 @@
-// mongodb server functions
-
-//test comment* 
-
-/* API endpoints
-
-1. GET ALL- grab information from the database
-2. POST - create new inforamtion in the databse
-3. GET - grab a single pice of inforamtion from the databsae
-4. DELETE - remove inforamtion from the database
-5. PATCH - update inforamtion in the database
-
-*/
+// server functions
 
 
 require('dotenv').config();
 
 const express = require('express');
-const propertyRoutes = require('./routes/properties')
 const mongoose = require('mongoose');
-
+const propertyRoutes = require('./routes/properties')
 
 const app = express();
+const port = process.env.PORT || 4000; 
+const url = process.env.MONGO_URI; // Update with the correct environment variable name
 
-// Connection URL and database name
-const url = process.env.MONG_URI;
-//const dbName = 'house_prices';
+app.use(express.json());
 
-// middleware
-//executes a task described in properties.js
-app.use(express.json())
 app.use((req, res, next) => {
-  console.log(req.path, req.method)
-  next()
-})
-
-//routes 
-app.get('/', (req, res) =>{
-  res.json({mssg:'Welcome to the app'})
-})
-
-// routes
-app.use('/api/properties', propertyRoutes)
+  console.log(req.path, req.method);
+  next();
+});
 
 
-// Connect to MongoDB server
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+app.get('/', (req, res) => {
+  res.json({ message: 'Welcome to the app' });
+});
+
+app.use('/api/properties', propertyRoutes);
+
+mongoose.connect(url, { useUnifiedTopology: true, useNewUrlParser: true })
   .then(() => {
-
-    app.listen(process.env.PORT, () =>{
-      console.log('connected to db listening on port: '+process.env.PORT)
-    })
-    // Start performing database operations here
+    app.listen(port, () => {
+      console.log('Connected to MongoDB server. Listening on port: ' + port);
+    });
   })
   .catch((err) => {
     console.error('Error connecting to MongoDB:', err);
   });
-
-
