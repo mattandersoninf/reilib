@@ -15,8 +15,11 @@ User server functions to modify properites on the webapp
 require('dotenv').config()
 
 const express = require('express')
-const Property = require('../models/propertyModel')
-
+const {
+    getProperties,
+    getProperty,
+    createProperty
+} = require('../controllers/propertyController')
 const router = express.Router()
 
 /*
@@ -40,50 +43,13 @@ router.patch('/:id', (req,res) => {
 
 
 //GET ALL properties
-router.get('/', (req, res) => {
-
-    res.json({mssg: 'GET all properties'})
-    
-    /*
-    // Get properties collection
-    const propertiesCollection = db.collection('properties');
-
-    // Find all properties
-    propertiesCollection.find().toArray((err, properties) => {
-      if (err) {
-        console.error('Error fetching properties:', err);
-        res.status(500).send('Internal Server Error');
-        return;
-      }
-
-      res.json(properties);
-    });
-    */
-
-})
+router.get('/',getProperties)
 
 //GET a single property
-router.get('/:id', (req,res) => {
-    
-    // const {ListingId, StreetNumber, StreetName, Sity, StateOrProvince, PostalCode, ListPrice, LivingArea, BedroomsTotal, BathroomsTotalDecimal} = req.body
-
-    res.json({mssg:"GET a single property"})
-})
+router.get('/:id', getProperty)
 
 // POST a property
-router.post('/', async(req,res) =>{
-    // form the entry that you want to put into the mongodb collection
-    const {ListingId, StreetNumber, StreetName, Sity, StateOrProvince, PostalCode, ListPrice, LivingArea, BedroomsTotal, BathroomsTotalDecimal} = req.body
-
-    try{
-        const property = await Property.create({ListingId, StreetNumber, StreetName, Sity, StateOrProvince, PostalCode, ListPrice, LivingArea, BedroomsTotal, BathroomsTotalDecimal})
-        res.status(200).json(property)
-    } catch (error){
-        console.log('Error posting to server:'+error.message)
-        res.status(400).json({error: error.message})
-    }
-
-})
+router.post('/',createProperty)
 
 // DELETE a property
 router.delete('/:id', (req,res) => {
