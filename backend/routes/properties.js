@@ -57,7 +57,7 @@ router.post('/',createProperty)
 router.delete('/:id', deleteProperty)
 
 //UPDATE a property
-router.patch('/id', updateProperty)
+router.patch('/:id', updateProperty)
 
 
 module.exports = router

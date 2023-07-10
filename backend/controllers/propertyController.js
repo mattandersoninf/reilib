@@ -101,23 +101,47 @@ const updateProperty = async (req, res) => {
       const { id } = req.params;
   
       if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({ error: 'Invalid property ID.' })
+        return res.status(404).json({ error: 'Invalid property ID.' });
       }
   
-      const property = await Property.findOneAndUpdate({ _id: id }, req.body, {
+      const allowedFields = [
+            'StreetNumber', 
+            'StreetName', 
+            'City', 
+            'StateOrProvince', 
+            'PostalCode', 
+            'ListPrice', 
+            'LivingArea', 
+            'BedroomsTotal', 
+            'BathroomsTotalDecimal'
+        ];
+    const updates = {};
+
+    // Apply updates only for allowed fields
+    for (const field of Object.keys(req.body)) {
+      if (allowedFields.includes(field)) {
+        updates[field] = req.body[field];
+      }
+    }
+  
+      if (Object.keys(updates).length === 0) {
+        return res.status(400).json({ error: 'No valid fields to update.' });
+      }
+  
+      const property = await Property.findOneAndUpdate({ _id: id }, updates, {
         new: true,
-      })
+      });
   
       if (!property) {
-        return res.status(404).json({ error: 'Property not found.' })
+        return res.status(404).json({ error: 'Property not found.' });
       }
   
       res.status(200).json(property);
     } catch (error) {
-      console.error('Error updating property:', error)
-      res.status(500).json({ error: 'Internal Server Error' })
+      console.error('Error updating property:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
     }
-  }
+  };
 
 
 
