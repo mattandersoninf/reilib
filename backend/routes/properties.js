@@ -18,7 +18,9 @@ const express = require('express')
 const {
     getProperties,
     getProperty,
-    createProperty
+    createProperty,
+    deleteProperty,
+    updateProperty
 } = require('../controllers/propertyController')
 const router = express.Router()
 
@@ -52,14 +54,10 @@ router.get('/:id', getProperty)
 router.post('/',createProperty)
 
 // DELETE a property
-router.delete('/:id', (req,res) => {
-    res.json({mssg:"DELETE a property"})
-})
+router.delete('/:id', deleteProperty)
 
 //UPDATE a property
-router.patch('/id', (req,res) => {
-    res.json({mssg:"UPDATE a property"})
-})
+router.patch('/id', updateProperty)
 
 
 module.exports = router

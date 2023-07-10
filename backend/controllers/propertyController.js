@@ -72,13 +72,59 @@ const createProperty = async (req, res) => {
 
 }
 
-// update a property
+// delete a property
+const deleteProperty = async (req, res) => {
+    try {
+      const { id } = req.params;
+  
+      if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ error: 'Invalid property ID.' })
+      }
+  
+      const property = await Property.findOneAndDelete({ _id: id })
+  
+      if (!property) {
+        return res.status(404).json({ error: 'Property not found.' })
+      }
+  
+      res.status(200).json(property);
+    } catch (error) {
+      console.error('Error deleting property:', error);
+      res.status(500).json({ error: 'Internal Server Error' })
+    }
+}
 
-//delete a property
+
+// update a property
+const updateProperty = async (req, res) => {
+    try {
+      const { id } = req.params;
+  
+      if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ error: 'Invalid property ID.' })
+      }
+  
+      const property = await Property.findOneAndUpdate({ _id: id }, req.body, {
+        new: true,
+      })
+  
+      if (!property) {
+        return res.status(404).json({ error: 'Property not found.' })
+      }
+  
+      res.status(200).json(property);
+    } catch (error) {
+      console.error('Error updating property:', error)
+      res.status(500).json({ error: 'Internal Server Error' })
+    }
+  }
+
 
 
 module.exports = {
     getProperties,
     getProperty,
-    createProperty
+    createProperty,
+    deleteProperty,
+    updateProperty
 }
