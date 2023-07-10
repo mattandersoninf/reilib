@@ -12,25 +12,28 @@ const getProperties = async(req,res) => {
 
 // get a single property
 const getProperty = async (req, res) => {
-    
-    // grab your search parameters
-    const { id } = req.params
-
-    
-    // search for your intended property given your intended parameters
-    const property = await Property.findById(id)
-
-    if (!mongoose.Types.ObjectId.isValis(id)){
-        return res.status(404).json({error: 'Property does not exist.'})
+    try {
+      // Grab your search parameters
+      const { id } = req.params;
+  
+      if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ error: 'Invalid property ID.' });
+      }
+  
+      // Search for the intended property given the parameters
+      const property = await Property.findById(id);
+  
+      if (!property) {
+        return res.status(404).json({ error: 'Property not found.' });
+      }
+  
+      res.status(200).json(property);
+    } catch (error) {
+      console.error('Error retrieving property:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
     }
+  };
 
-    if (!property){
-        return res.status(404).json({error: 'Property does not exist.'})
-    }
-
-    res.status(200).status(property)
-
-}
 
 // create a new property
 const createProperty = async (req, res) => {
