@@ -1,4 +1,5 @@
 const Property = require('../models/propertyModel')
+const mongoose = require('mongoose')
 
 // get all properties
 
@@ -12,9 +13,16 @@ const getProperties = async(req,res) => {
 // get a single property
 const getProperty = async (req, res) => {
     
+    // grab your search parameters
     const { id } = req.params
 
+    
+    // search for your intended property given your intended parameters
     const property = await Property.findById(id)
+
+    if (!mongoose.Types.ObjectId.isValis(id)){
+        return res.status(404).json({error: 'Property does not exist.'})
+    }
 
     if (!property){
         return res.status(404).json({error: 'Property does not exist.'})
