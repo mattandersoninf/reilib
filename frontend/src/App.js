@@ -1,10 +1,11 @@
-import logo from './logo.svg';
 import { useState } from 'react';
-import './App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Home from './pages/Home';
-import Navbar from './components/Navbar';
+import About from './pages/About';
+import SignIn from './pages/SignIn';
+import Personal from './pages/Personal';
 
+/*
 function App() {
   return (
     <div className="App">
@@ -19,10 +20,9 @@ function App() {
     </div>
   );
 }
+*/
 
-  /*
-  const title = 'REILib';
-
+const App = () => {
   const [content, setContent] = useState('home');
 
   const handleButtonClick = (page) => {
@@ -33,71 +33,38 @@ function App() {
 
   switch (content) {
     case 'home':
-      pageContent = (
-        <>
-          <h1>REI Library</h1>
-          <p>This is some content on my website.</p>
-        </>
-      );
+      pageContent = <Home />;
       break;
     case 'about':
-      pageContent = (
-        <>
-          <h1>About</h1>
-          <p>The mssion of this website is to allow investors to track investment opportuinites and provide insight into the parameters that make good optimal deals.</p>
-        </>
-      );
+      pageContent = <About />;
       break;
     case 'signin':
-      pageContent = (
-        <>
-          <h1>Sign In</h1>
-          <p>Please sign in to access the members-only area of my website.</p>
-          <form>
-            <label>Email:</label>
-            <input type="email" required /><br />
-            <label>Password:</label>
-            <input type="password" required /><br />
-            <button type="submit">Sign In</button>
-          </form>
-        </>
-      );
+      pageContent = <SignIn />;
       break;
     case 'personal':
-      pageContent = (
-        <>
-          <h1>personal</h1>
-          <p>Check out my latest personal posts!</p>
-        </>
-      );
+      pageContent = <Personal />;
       break;
     default:
-      pageContent = (
-        <>
-          <h1>Welcome to my website!</h1>
-          <p>This is some content on my website.</p>
-        </>
-      );
+      pageContent = <Home />;
       break;
   }
 
   return (
-    <div style={styles.container}>
-      <div style={styles.sidebar}>
-        <button style={styles.button} onClick={() => handleButtonClick('home')}>Home</button>
-        <button style={styles.button} onClick={() => handleButtonClick('about')}>About</button>
-        <button style={styles.button} onClick={() => handleButtonClick('signin')}>Sign In</button>
-        <button style={styles.button} onClick={() => handleButtonClick('personal')}>personal</button>
+    <BrowserRouter>
+      <div style={styles.container}>
+        <div style={styles.sidebar}>
+          <button style={styles.button} onClick={() => handleButtonClick('home')}>Home</button>
+          <button style={styles.button} onClick={() => handleButtonClick('about')}>About</button>
+          <button style={styles.button} onClick={() => handleButtonClick('signin')}>Sign In</button>
+          <button style={styles.button} onClick={() => handleButtonClick('personal')}>Personal</button>
+        </div>
+        <div style={styles.main}>
+          {pageContent}
+        </div>
       </div>
-      <div style={styles.main}>
-        {pageContent}
-      </div>
-    </div>
+    </BrowserRouter>
   );
-*/
-
-
-
+};
 
 const styles = {
   container: {
