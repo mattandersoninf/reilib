@@ -3,6 +3,7 @@
 import { useEffect } from "react"
 import { useState } from "react"
 import Navbar from "../components/Navbar"
+import PropertyDetails from "../components/PropertyDetails"
 
 const Home = () => {
 
@@ -29,9 +30,7 @@ const Home = () => {
             <Navbar/>
             <div className="properties">
                 {properties && properties.map((property) => (
-                    <p key={property._id}>{
-                        property.StreetNumber+' '+property.StreetName+', '+property.City+', '+property.StateOrProvince+', '+property.PostalCode
-                        }</p>
+                    <PropertyDetails key={property._id} property={property}/>
                 ))}
             </div>
         </div>
