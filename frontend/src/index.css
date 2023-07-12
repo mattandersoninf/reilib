@@ -32,7 +32,7 @@ code {
 .property-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
-  color: var(--primary);
+  color: rgba(0, 210, 196, 0.8);
 }
 
 property-details p {
