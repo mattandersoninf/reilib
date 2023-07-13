@@ -12,7 +12,7 @@
             - veiw properties/investment
     b. properties
         - 1. refer to RESO WEB API
-            - listingID
+            -  
             - address
             - bed
             - bath
@@ -48,7 +48,7 @@
             - Close Price
             - Country **
             - Days On Market
-            - ListingId
+            -  
             - ListPrice **
             - LivingArea (sq ft)**
             - NetOperatingIncome

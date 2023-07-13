@@ -7,7 +7,7 @@
             - Property inforamtion
                 Address ** (StreetNumber, StreetName)
                 City/State/Zip ** (City, StateOrProvince, PostalCode)
-                MLS # ** (ListingId)
+                MLS # ** ( )
                 Square Feet ** (LivingArea)
                 Other Notes (PropertyType)
             - Purchase inforamtion

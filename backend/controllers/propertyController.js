@@ -38,7 +38,6 @@ const getProperty = async (req, res) => {
 // create a new property
 const createProperty = async (req, res) => {
     const {
-        ListingId, 
         StreetNumber, 
         StreetName, 
         City, 
@@ -54,7 +53,6 @@ const createProperty = async (req, res) => {
 
     try{
         const property = await Property.create({
-            ListingId, 
             StreetNumber, 
             StreetName, 
             City, 

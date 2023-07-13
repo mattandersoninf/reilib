@@ -5,10 +5,6 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const propertySchema =  new Schema({
-    ListingId: {
-        type: String,
-        required: true
-    },
     StreetNumber: {
         type: String,
         require:true
@@ -30,7 +26,7 @@ const propertySchema =  new Schema({
         require:true
     },
     ListPrice: {
-        type: String,
+        type: Number,
         require:true
     },
     // sq footage, livable space

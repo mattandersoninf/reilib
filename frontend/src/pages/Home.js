@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import { useState } from "react"
 import Navbar from "../components/Navbar"
 import PropertyDetails from "../components/PropertyDetails"
+import PropertyForm from "../components/PropertyForm"
 
 const Home = () => {
 
@@ -33,6 +34,7 @@ const Home = () => {
                     <PropertyDetails key={property._id} property={property}/>
                 ))}
             </div>
+            <PropertyForm />
         </div>
     )
 }
