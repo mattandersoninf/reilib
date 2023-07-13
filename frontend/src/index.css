@@ -51,3 +51,39 @@ property-details span {
   border-radius: 50%;
   color: #333;
 }
+
+/* new property form */
+
+label, input {
+  display: block;
+}
+
+input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+form button {
+  background: rgba(0, 210, 196, 0.8);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+
+}
+
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--primary);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px;
+}
