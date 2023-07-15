@@ -1,34 +1,31 @@
 import { useState } from "react";
+import { usePropertiesContext } from "../hooks/usePropertiesContext";
 
 const PropertyForm = () => {
-  const [address, setAddress] = useState("");
+  const { dispatch } = usePropertiesContext();
+  const [StreetAddress, setStreetAddress] = useState("");
+  const [City, setCity] = useState("");
+  const [StateOrProvince, setStateOrProvince] = useState("");
+  const [PostalCode, setPostalCode] = useState("");
   const [ListPrice, setListPrice] = useState("");
   const [LivingArea, setLivingArea] = useState("");
   const [BedroomsTotal, setBedroomsTotal] = useState("");
   const [BathroomsTotalDecimal, setBathroomsTotalDecimal] = useState("");
   const [error, setError] = useState(null);
 
-  const separateAddress = (address) => {
+  const separateStreetAddress = (streetAddress) => {
     const components = {
       StreetNumber: "",
       StreetName: "",
-      City: "",
-      StateOrProvince: "",
-      PostalCode: "",
     };
 
     // Split the address by commas
-    const addressParts = address.split(",");
+    const streetAddressParts = streetAddress.split(",");
 
     // Extract the street number and street name
-    const streetInfo = addressParts[0].trim().split(" ");
+    const streetInfo = streetAddressParts[0].trim().split(" ");
     components.StreetNumber = streetInfo.shift();
     components.StreetName = streetInfo.join(" ");
-
-    // Extract the remaining address components
-    components.City = addressParts[1].trim();
-    components.StateOrProvince = addressParts[2].trim();
-    components.PostalCode = addressParts[3].trim();
 
     return components;
   };
@@ -36,10 +33,13 @@ const PropertyForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const separatedAddress = separateAddress(address);
+    const separatedAddress = separateStreetAddress(StreetAddress);
 
     const property = {
       ...separatedAddress,
+      City,
+      StateOrProvince,
+      PostalCode,
       ListPrice,
       LivingArea,
       BedroomsTotal,
@@ -61,13 +61,17 @@ const PropertyForm = () => {
       if (!response.ok) {
         setError(json.error);
       } else {
-        setAddress("");
+        setStreetAddress("");
+        setCity("");
+        setStateOrProvince("");
+        setPostalCode("");
         setListPrice("");
         setLivingArea("");
         setBedroomsTotal("");
         setBathroomsTotalDecimal("");
         setError(null);
         console.log("New property has been added");
+        dispatch({type: "CREATE_PROPERTY", payload: json})
       }
     } catch (error) {
       console.error("Error submitting property:", error);
@@ -78,11 +82,32 @@ const PropertyForm = () => {
     <form className="create" onSubmit={handleSubmit}>
       <h3>Add a New Property</h3>
 
-      <label>Address:</label>
+      <label>Street Address:</label>
       <input
         type="text"
-        onChange={(e) => setAddress(e.target.value)}
-        value={address}
+        onChange={(e) => setStreetAddress(e.target.value)}
+        value={StreetAddress}
+      />
+
+      <label>City:</label>
+      <input
+        type="text"
+        onChange={(e) => setCity(e.target.value)}
+        value={City}
+      />
+
+      <label>State:</label>
+      <input
+        type="text"
+        onChange={(e) => setStateOrProvince(e.target.value)}
+        value={StateOrProvince}
+      />
+
+      <label>Zip Code:</label>
+      <input
+        type="text"
+        onChange={(e) => setPostalCode(e.target.value)}
+        value={PostalCode}
       />
 
       <label>List Price:</label>

@@ -1,14 +1,19 @@
-// home component
+// home page
 
 import { useEffect } from "react"
-import { useState } from "react"
-import Navbar from "../components/Navbar"
+import { usePropertiesContext } from "../hooks/usePropertiesContext"
+
+
+// components
 import PropertyDetails from "../components/PropertyDetails"
 import PropertyForm from "../components/PropertyForm"
+import Navbar from "../components/Navbar"
+
+
 
 const Home = () => {
 
-    const [properties, setProperties] = useState(null)
+    const {properties, dispatch} = usePropertiesContext()
 
     useEffect(() =>{
         const fetchProperties = async() => {
@@ -16,14 +21,14 @@ const Home = () => {
             const json = await response.json()
 
             if (response.ok){
-                setProperties(json)
+                dispatch({type: 'SET_PROPERTIES', payload: json})
             }
 
         }
 
         fetchProperties()
 
-    }, [])
+    }, [dispatch])
 
 
     return (
