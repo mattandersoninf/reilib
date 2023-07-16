@@ -1,3 +1,5 @@
+import { usePropertiesContext } from "../hooks/usePropertiesContext";
+
 function reformatDate(dateString) {
     let date = new Date(dateString);
     
@@ -13,6 +15,26 @@ function reformatDate(dateString) {
 
 
 const PropertyDetails = ({property}) => {
+
+    const { dispatch } = usePropertiesContext()
+
+    const handleClick =  async() => {
+        const response = await fetch('/api/properties/' + property._id, {
+            
+            method: 'DELETE'
+
+        })
+
+        const json = await response.json()
+
+        if (response.ok){
+
+            dispatch({type:'DELETE_PROPERTY', payload: json})
+
+        }
+
+    }
+
     return (
         <div className="property-details">
             <h4>{
@@ -34,6 +56,7 @@ const PropertyDetails = ({property}) => {
                 property.BathroomsTotalDecimal
                 }</p>
             <p><strong>Upload Date: </strong>{reformatDate(property.createdAt)}</p>
+            <span onClick={handleClick}>Delete</span>
         </div>
     )
 }

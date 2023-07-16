@@ -12,6 +12,11 @@ export const propertiesReducer = (state, action) => {
             return {
                 properties: [action.payload, ...state.properties]
             }
+        case 'DELETE_PROPERTY':
+
+            return {
+                properties: state.properties.filter((p) => p._id !== action.payload._id)
+            }
         default:
             return state
     }
