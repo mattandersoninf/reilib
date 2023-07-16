@@ -1,3 +1,5 @@
+/* code block 6 */
+
 import { useState } from "react";
 import { usePropertiesContext } from "../hooks/usePropertiesContext";
 
@@ -12,6 +14,7 @@ const PropertyForm = () => {
   const [BedroomsTotal, setBedroomsTotal] = useState("");
   const [BathroomsTotalDecimal, setBathroomsTotalDecimal] = useState("");
   const [error, setError] = useState(null);
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const separateStreetAddress = (streetAddress) => {
     const components = {
@@ -58,6 +61,7 @@ const PropertyForm = () => {
 
       const json = await response.json();
 
+      // handling empty parameters
       if (!response.ok) {
         setError(json.error);
       } else {
@@ -70,6 +74,7 @@ const PropertyForm = () => {
         setBedroomsTotal("");
         setBathroomsTotalDecimal("");
         setError(null);
+        setEmptyFields([]);
         console.log("New property has been added");
         dispatch({type: "CREATE_PROPERTY", payload: json})
       }
@@ -87,6 +92,7 @@ const PropertyForm = () => {
         type="text"
         onChange={(e) => setStreetAddress(e.target.value)}
         value={StreetAddress}
+        className={emptyFields.includes('StreetAddress') ? 'error' : ''}
       />
 
       <label>City:</label>
@@ -94,6 +100,7 @@ const PropertyForm = () => {
         type="text"
         onChange={(e) => setCity(e.target.value)}
         value={City}
+        className={emptyFields.includes('City') ? 'error' : ''}
       />
 
       <label>State:</label>
@@ -101,6 +108,7 @@ const PropertyForm = () => {
         type="text"
         onChange={(e) => setStateOrProvince(e.target.value)}
         value={StateOrProvince}
+        className={emptyFields.includes('StateOrProvince') ? 'error' : ''}
       />
 
       <label>Zip Code:</label>
@@ -108,6 +116,7 @@ const PropertyForm = () => {
         type="text"
         onChange={(e) => setPostalCode(e.target.value)}
         value={PostalCode}
+        className={emptyFields.includes('PostalCode') ? 'error' : ''}
       />
 
       <label>List Price:</label>
@@ -115,6 +124,7 @@ const PropertyForm = () => {
         type="number"
         onChange={(e) => setListPrice(e.target.value)}
         value={ListPrice}
+        className={emptyFields.includes('ListPrice') ? 'error' : ''}
       />
 
       <label>Living Area (sq ft):</label>
@@ -122,6 +132,7 @@ const PropertyForm = () => {
         type="text"
         onChange={(e) => setLivingArea(e.target.value)}
         value={LivingArea}
+        className={emptyFields.includes('LivingArea') ? 'error' : ''}
       />
 
       <label>Total Bedrooms:</label>
@@ -129,6 +140,7 @@ const PropertyForm = () => {
         type="text"
         onChange={(e) => setBedroomsTotal(e.target.value)}
         value={BedroomsTotal}
+        className={emptyFields.includes('BedroomsTotal') ? 'error' : ''}
       />
 
       <label>Total Bathrooms:</label>
@@ -136,10 +148,11 @@ const PropertyForm = () => {
         type="text"
         onChange={(e) => setBathroomsTotalDecimal(e.target.value)}
         value={BathroomsTotalDecimal}
+        className={emptyFields.includes('BathroomsTotalDecimal') ? 'error' : ''}
       />
 
       <button type="submit">Submit</button>
-      {error && <div classname="error">{error}</div>}
+      {error && <div className="error">{error}</div>}
     </form>
   );
 };

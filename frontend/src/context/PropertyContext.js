@@ -1,3 +1,5 @@
+/* code block 7 */
+
 import { createContext, useReducer } from "react";
 
 export const PropertiesContext = createContext();

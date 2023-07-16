@@ -1,3 +1,4 @@
+/* code block 9 */
 // home page
 
 import { useEffect } from "react"
@@ -7,7 +8,6 @@ import { usePropertiesContext } from "../hooks/usePropertiesContext"
 // components
 import PropertyDetails from "../components/PropertyDetails"
 import PropertyForm from "../components/PropertyForm"
-import Navbar from "../components/Navbar"
 
 
 
@@ -33,7 +33,6 @@ const Home = () => {
 
     return (
         <div className="home">
-            <Navbar/>
             <div className="properties">
                 {properties && properties.map((property) => (
                     <PropertyDetails key={property._id} property={property}/>

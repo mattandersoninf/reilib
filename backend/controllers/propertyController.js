@@ -37,9 +37,10 @@ const getProperty = async (req, res) => {
 
 // create a new property
 const createProperty = async (req, res) => {
+  
     const {
-        StreetNumber, 
-        StreetName, 
+        StreetNumber,
+        StreetName,
         City, 
         StateOrProvince, 
         PostalCode, 
@@ -49,20 +50,65 @@ const createProperty = async (req, res) => {
         BathroomsTotalDecimal
      } = req.body
 
+    // handle empty fields
+    let emptyFields = [];
+
+    if(!StreetNumber){
+      emptyFields.push('StreetNumber');
+    }
+
+    if(!StreetName){
+      emptyFields.push('StreetName')
+    }
+
+    if(!City){
+      emptyFields.push('City')
+    }
+    
+    if(!StateOrProvince){
+      emptyFields.push('StateOrProvince')
+    }
+
+    if(!PostalCode){
+      emptyFields.push('PostalCode')
+    }
+
+    if(!ListPrice){
+      emptyFields.push('ListPrice')
+    }
+
+    if(!LivingArea){
+      emptyFields.push('LivingArea')
+    }
+    
+    if(!BedroomsTotal){
+      emptyFields.push('BedroomsTotal')
+    }
+
+    if(!BathroomsTotalDecimal){
+      emptyFields.push('BathroomsTotalDecimal')
+    }
+    
+    if(emptyFields. length > 0){
+      return res.status(400).json({error:'Please fill in all fields.', emptyFields})
+    }
+
+
+
     // add doc to db
 
     try{
-        const property = await Property.create({
-            StreetNumber, 
-            StreetName, 
-            City, 
-            StateOrProvince, 
-            PostalCode, 
-            ListPrice, 
-            LivingArea, 
-            BedroomsTotal, 
-            BathroomsTotalDecimal})
-        res.status(200).json(property)
+      const property = await Property.create({
+          StreetNumber, 
+          StreetName, 
+          City, 
+          StateOrProvince, 
+          PostalCode, 
+          ListPrice, 
+          LivingArea, 
+          BedroomsTotal, 
+          BathroomsTotalDecimal})
+      res.status(200).json(property)
     } catch (error){
         console.log('Error posting to server:'+error.message)
         res.status(400).json({error: error.message})
