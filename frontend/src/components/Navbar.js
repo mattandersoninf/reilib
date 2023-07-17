@@ -7,7 +7,15 @@ const Navbar = () => {
         <header>
             <div className='container'>
                 
-                <Link to="/"/>
+                <Link to="/">
+                    <h1>REILib</h1>
+                </Link>
+                <nav>
+                    <div>
+                        <Link to="/login">Login</Link>
+                        <Link to="/signup">SignUp</Link>
+                    </div>
+                </nav>
 
             </div>
 
