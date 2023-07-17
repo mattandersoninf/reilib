@@ -26,6 +26,18 @@ const userSchema =  new Schema({
 // STATIC SIGNUP METHOD
 userSchema.statics.signup = async function(Email, Password) {
 
+    // validation
+
+    if (!Email || !Password){
+        throw Error('All fields must be filled.')
+    }
+    if(!validator.isEmail(Email)){
+        throw Error('Email is not valid')
+    }
+    if(!validator.isStrongPassword(Password)){
+        throw Error('Password not strong enough')
+    }
+
     const exists = await this.findOne({ Email })
 
     if (exists) {
@@ -40,7 +52,6 @@ userSchema.statics.signup = async function(Email, Password) {
     return user
 
 }
-
 
 
 module.exports = mongoose.model('User', userSchema)

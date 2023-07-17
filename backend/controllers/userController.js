@@ -16,19 +16,17 @@ const signupUser = async (req, res) => {
     const { Email, Password } = req.body;
   
     try {
-      const userExists = await User.findOne({ Email: Email });
-      if (userExists) {
-        return res.status(400).json({ error: 'Email already in use' });
-      }
+
+      const userExists = await User.signup(Email, Password);
   
-      const salt = await bcrypt.genSalt(10);
-      const hash = await bcrypt.hash(Password, salt);
-  
-      const user = await User.create({ Email: Email, Password: hash });
-      res.status(200).json({ Email, user });
+      res.status(200).json({ Email, userExists });
+
     } catch (error) {
+
       console.error('Error signing up user:', error);
+
       res.status(500).json({ error: 'An error occurred while signing up the user' });
+    
     }
 };
 
