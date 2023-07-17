@@ -50,7 +50,7 @@ const App = () => {
         <h1>REILib</h1>
         <Routes>
           <Route
-            path="/"
+            path="/login"
             element={pageContent}
           >
           </Route>
