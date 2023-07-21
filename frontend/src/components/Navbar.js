@@ -6,10 +6,6 @@ const Navbar = () => {
     return(
         <header>
             <div className='container'>
-                
-                <Link to="/">
-                    <h1>REILib</h1>
-                </Link>
                 <nav>
                     <div>
                         <Link to="/login">Login</Link>

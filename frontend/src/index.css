@@ -68,7 +68,6 @@ code {
 
 .property-details {
   display: grid;
-  grid-template-columns: max-content ;
   background: #fff;
   border-radius: 4px;
   margin: 20px auto;
