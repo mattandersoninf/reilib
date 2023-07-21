@@ -47,16 +47,16 @@ const PropertyDetails = ({property}) => {
             }</p>
             <p><strong>List Price: </strong>{
                 property.ListPrice
-                }</p>
+            }</p>
             <p><strong>Living Area: </strong>{
                 property.LivingArea
-                }</p>
+            }</p>
             <p><strong>Total Bedrooms: </strong>{
                 property.BedroomsTotal
-                }</p>
+            }</p>
             <p><strong>Total Bathrooms: </strong>{
                 property.BathroomsTotalDecimal
-                }</p>
+            }</p>
             <p><strong>Upload Date: </strong>{reformatDate(property.createdAt)}</p>
             <span onClick={handleClick}>Delete</span>
         </div>

@@ -60,19 +60,27 @@ code {
   grid-template-columns: 3fr 1fr;
   gap: 100px;
 }
+  
+.properties{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 
 .property-details {
+  display: grid;
+  grid-template-columns: max-content ;
   background: #fff;
   border-radius: 4px;
   margin: 20px auto;
-  padding: 20px;
+  padding: 16px 8px 8px 8px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0,0,0,.05); 
 }
 
 .property-details h4 {
-  margin: 0 0 10px 0;
-  font-size: 1.2em;
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 16px;
   color: var(--primary);
 }
 
