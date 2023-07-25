@@ -62,41 +62,55 @@ code {
 }
   
 .properties{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .property-details {
-  display: grid;
-  background: #fff;
-  border-radius: 4px;
-  margin: 20px auto;
-  padding: 16px 8px 8px 8px;
-  position: relative;
-  box-shadow: 2px 2px 5px rgba(0,0,0,.05); 
+  width: 30%;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 10px;
+  padding: 20px;
+}
+
+.property-details:hover {
+  background-color: #f7f7f7;
+  transform: translateY(-5px);
 }
 
 .property-details h4 {
   font-size: 24px;
-  font-weight: 600;
-  margin-top: 16px;
-  color: var(--primary);
+  margin: 0;
+  color: #333;
 }
 
 .property-details p {
-  margin: 0;
-  font-size: 0.9em;
-  color: #555;
+  font-size: 16px;
+  color: #666;
+}
+
+.property-details-img{
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
 .property-details span {
   top: 20px;
   right: 20px;
   cursor: pointer;
-  background: #f1f1f1;
   padding: 10px 6px;
   border-radius: 10px;
-  color: #333;
+  background-color: #ff6b6b;
+}
+
+.property-details span:hover {
+  background-color: #ff4949;
 }
 
 /* New Property Form */
