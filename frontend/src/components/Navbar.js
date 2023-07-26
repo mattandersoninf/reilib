@@ -1,5 +1,4 @@
 /* code block 4 */
-import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -7,10 +6,10 @@ const Navbar = () => {
         <header>
             <div className='container'>
                 <nav>
-                    <div>
-                        <Link to="/login">Login</Link>
-                        <Link to="/signup">SignUp</Link>
-                    </div>
+                    <ul>
+                        <li><a href="#login">Login</a></li>
+                        <li><a href="#signup">SignUp</a></li>
+                    </ul>
                 </nav>
 
             </div>
