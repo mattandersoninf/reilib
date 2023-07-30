@@ -1,8 +1,13 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Routes, Route } from 'react-router-dom';
 import Navbar from '../components/Navbar';
-import { useState } from 'react';
 import languageData from './lang';
+import Home from '../pages/Home';
+import LogIn from '../pages/LogIn';
+import SignUp from '../pages/Signup';
+import Personal from '../pages/Personal';
+
+
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -34,22 +39,32 @@ const Layout = ({ children }) => {
 
   // const backgroundColor = getBackgroundColor(location.pathname);
 
-    // Navbar handling
-  const [isNavbarVisible, setIsNavbarVisible] = useState(false);
 
-  const toggleNavbar = () => {
-    setIsNavbarVisible(!isNavbarVisible);
-  };
+  
 
   return (
     <div style={{ backgroundImage, minHeight: '100vh' }}>
-      <header>
-        <div className="logo">Your Logo</div>
-        <Navbar className={`navbar ${isNavbarVisible ? 'visible' : ''}`}/>
-        <button id="toggle-btn" onClick={toggleNavbar}>
-          Menu
-        </button>
-      </header>
+        <header>
+            <Navbar/>
+        </header>
+        <Routes>
+            <Route
+                path = "/"
+                element= {<Home/>}
+            />
+            <Route
+                path="/login"
+                element={<LogIn/>}
+            />
+            <Route
+                path="/signup"
+                element={<SignUp/>}
+            />
+            <Route
+                path="/personal"
+                element={<Personal/>}
+            />
+        </Routes>
       <main>{children}</main>
     </div>
   );

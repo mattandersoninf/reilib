@@ -167,27 +167,38 @@ header {
   font-weight: bold;
 }
 
-nav {
+/* Navbar.css */
+.navbar-container {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
 }
 
-nav ul {
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbar ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-nav li {
+.navbar li {
   margin-left: 20px;
 }
 
-nav a {
+.navbar a {
   color: #fff;
   text-decoration: none;
-}
-
-.hidden {
-  display: none;
 }
 
 #toggle-btn {
@@ -200,26 +211,30 @@ nav a {
   outline: none;
 }
 
-@media (max-width: 768px) {
-  .logo {
-    font-size: 20px;
-  }
-  nav li {
-    display: none;
-  }
-  nav li:first-child {
-    display: block;
-  }
-  .hidden {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background-color: #333;
-    z-index: 1;
-  }
-  .hidden li {
-    margin: 10px;
-  }
+.title {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  color: #fff;
+  font-size: 24px;
+  margin: 0;
+}
+
+.visible {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: #333;
+  z-index: 1;
+}
+
+.visible li {
+  margin: 10px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
 }
