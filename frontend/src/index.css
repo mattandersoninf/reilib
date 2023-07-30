@@ -153,6 +153,7 @@ input.error {
   border: 1px solid var(--error);
 }
 
+/* Navbar.css */
 header {
   background-color: #333;
   color: #fff;
@@ -165,38 +166,25 @@ header {
 .logo {
   font-size: 24px;
   font-weight: bold;
+  color: #fff;
+  text-decoration: none;
 }
 
-/* Navbar.css */
-.navbar-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #333;
-  padding: 10px 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1;
-}
-
-.navbar {
+nav {
   display: flex;
   align-items: center;
 }
 
-.navbar ul {
+nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  align-items: center;
 }
 
-.navbar li {
+nav li {
   margin-left: 20px;
-}
-
-.navbar a {
   color: #fff;
   text-decoration: none;
 }
@@ -212,9 +200,6 @@ header {
 }
 
 .title {
-  position: absolute;
-  top: 10px;
-  left: 20px;
   color: #fff;
   font-size: 24px;
   margin: 0;
@@ -237,4 +222,13 @@ header {
 .logo {
   font-size: 24px;
   font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+form.login, form.signup{
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
 }

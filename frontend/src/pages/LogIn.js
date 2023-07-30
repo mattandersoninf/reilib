@@ -21,13 +21,14 @@ const LogIn = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 value={Email}
             />
-            <label>Email</label>
+            <label>Password</label>
             <input
                 type="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 value={Password}
             />
-            <label>Password</label>
+
+            <button>Log In</button>
             
         </form>
     )

@@ -7,7 +7,6 @@ import { usePropertiesContext } from "../hooks/usePropertiesContext"
 
 // components
 import PropertyDetails from "../components/PropertyDetails"
-import PropertyForm from "../components/PropertyForm"
 
 /*
 <PropertyForm/>

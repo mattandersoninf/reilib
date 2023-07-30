@@ -30,7 +30,7 @@ const loginUser = async (req,res) => {
 
       console.error('Error signing up user:', error);
 
-      res.status(500).json({ error: 'An error occurred while signing up the user' });
+      res.status(500).json({ error: error.message });
     
     }
     
@@ -55,7 +55,7 @@ const signupUser = async (req, res) => {
 
       console.error('Error signing up user:', error);
 
-      res.status(500).json({ error: 'An error occurred while signing up the user' });
+      res.status(500).json({ error: error.message });
     
     }
 

@@ -1,3 +1,4 @@
+
 /* code block 4 */
 
 import React, { useState } from "react";
@@ -16,15 +17,15 @@ const Navbar = () => {
     return(
         <header>
             <div className="logo">
-            <Link to="/">
-              <h1>REILib</h1>
-            </Link>
+                <Link to="/">
+                    <h1>REILib</h1>
+                </Link>
             </div>
             <div className='navbar-container'>
                 <nav>
                     <ul>
-                        <li><a href="login">Login</a></li>
-                        <li><a href="signup">SignUp</a></li>
+                        <Link to="/login"><li>Login</li></Link>
+                        <Link to="/signup"><li>SignUp</li></Link>
                     </ul>
                 </nav>
             </div>
