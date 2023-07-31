@@ -23,6 +23,7 @@ const {
     updateProperty
 } = require('../controllers/propertyController')
 const router = express.Router()
+const requireAuth = require('../middleware/requireAuth')
 
 /*
 // TEST ROUTES
@@ -42,6 +43,9 @@ router.patch('/:id', (req,res) => {
     res.json({mssg:'UPDATE a property'})
 })
 */
+
+// require authorization for all property routes
+router.use(requireAuth)
 
 
 //GET ALL properties

@@ -1,15 +1,17 @@
-// SignIn component
+// LogIn page
 
 
-import { useState } from "react"
+import { useState } from "react";
+import { useLogin } from "../hooks/useLogin";
 
 const LogIn = () => {
-    const [Email, setEmail] = useState('')
-    const [Password, setPassword] = useState('')
+    const [Email, setEmail] = useState('');
+    const [Password, setPassword] = useState('');
+    const {login, error, isLoading} = useLogin();
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        console.log(Email,Password)
+        await login(Email,Password)
     }
 
     return(
@@ -28,7 +30,8 @@ const LogIn = () => {
                 value={Password}
             />
 
-            <button>Log In</button>
+            <button disabled={isLoading}>Log In</button>
+            {error && <div className="error">{error}</div>}
             
         </form>
     )

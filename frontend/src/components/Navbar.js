@@ -3,16 +3,26 @@
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useLogout } from "../hooks/useLogout";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 
 const Navbar = () => {
 
     // Navbar handling
     const [isNavbarVisible, setIsNavbarVisible] = useState(false);
+    
 
     const toggleNavbar = () => {
         setIsNavbarVisible(!isNavbarVisible);
     };
+
+    const { logout } = useLogout();
+    const { user } = useAuthContext();
+
+    const handleClick = () => {
+        logout();
+    }
 
     return(
         <header>
@@ -21,12 +31,21 @@ const Navbar = () => {
                     <h1>REILib</h1>
                 </Link>
             </div>
+            
             <div className='navbar-container'>
                 <nav>
-                    <ul>
-                        <Link to="/login"><li>Login</li></Link>
-                        <Link to="/signup"><li>SignUp</li></Link>
-                    </ul>
+                    {user && (
+                        <div>
+                            <span>{user.Email}</span>
+                            <button onClick={handleClick} className="logout">Log Out</button>
+                        </div>
+                    )}
+                    {!user && (
+                        <ul>
+                            <Link to="/login"><li>Login</li></Link>
+                            <Link to="/signup"><li>SignUp</li></Link>
+                        </ul>
+                    )}
                 </nav>
             </div>
         </header>
