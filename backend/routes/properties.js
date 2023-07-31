@@ -22,7 +22,6 @@ const {
     deleteProperty,
     updateProperty
 } = require('../controllers/propertyController')
-const router = express.Router()
 const requireAuth = require('../middleware/requireAuth')
 
 /*
@@ -43,6 +42,9 @@ router.patch('/:id', (req,res) => {
     res.json({mssg:'UPDATE a property'})
 })
 */
+
+
+const router = express.Router()
 
 // require authorization for all property routes
 router.use(requireAuth)
