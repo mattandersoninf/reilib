@@ -163,7 +163,7 @@ header {
   align-items: center;
 }
 
-.logo {
+.logo a {
   font-size: 24px;
   font-weight: bold;
   color: #fff;
@@ -229,12 +229,6 @@ nav li {
   margin: 10px;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #fff;
-  text-decoration: none;
-}
 
 form.login, form.signup{
   margin: 40px auto;

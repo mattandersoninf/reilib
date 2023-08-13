@@ -6,6 +6,7 @@ import Home from './Home';
 import LogIn from './LogIn';
 import SignUp from './SignUp';
 import Personal from './Personal';
+import AddNewProperty from './AddNewProperty';
 
 
 
@@ -44,9 +45,7 @@ const Layout = ({ children }) => {
 
   return (
     <div style={{ backgroundImage, minHeight: '100vh' }}>
-        <header>
-            <Navbar/>
-        </header>
+        <Navbar/>
         <Routes>
             <Route
                 path = "/"
@@ -63,6 +62,10 @@ const Layout = ({ children }) => {
             <Route
                 path="/personal"
                 element={<Personal/>}
+            />
+            <Route
+              path="/newProp"
+              element={<AddNewProperty/>}
             />
         </Routes>
       <main>{children}</main>

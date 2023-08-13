@@ -1,6 +1,7 @@
 /* code block 5 */
 
 import { usePropertiesContext } from "../hooks/usePropertiesContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 function reformatDate(dateString) {
     let date = new Date(dateString);
@@ -18,12 +19,21 @@ function reformatDate(dateString) {
 
 const PropertyDetails = ({property}) => {
 
-    const { dispatch } = usePropertiesContext()
+    const { dispatch } = usePropertiesContext();
+
+    const user = useAuthContext();
 
     const handleClick =  async() => {
+
+        if(!user){
+            return
+        }
+
         const response = await fetch('/api/properties/' + property._id, {
-            
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
 
         })
 

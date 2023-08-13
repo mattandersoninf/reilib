@@ -44,6 +44,7 @@ const Navbar = () => {
                         <ul>
                             <Link to="/login"><li>Login</li></Link>
                             <Link to="/signup"><li>SignUp</li></Link>
+                            <Link to="/newProp"><li>Add New Property</li></Link>
                         </ul>
                     )}
                 </nav>

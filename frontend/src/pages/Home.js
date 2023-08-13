@@ -1,8 +1,9 @@
 /* code block 9 */
 // home page
 
-import { useEffect } from "react"
-import { usePropertiesContext } from "../hooks/usePropertiesContext"
+import { useEffect } from "react";
+import { usePropertiesContext } from "../hooks/usePropertiesContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 
 // components
@@ -14,11 +15,17 @@ import PropertyDetails from "../components/PropertyDetails"
 
 const Home = () => {
 
-    const {properties, dispatch} = usePropertiesContext()
+    const {properties, dispatch} = usePropertiesContext();
+    const {user} = useAuthContext();
 
     useEffect(() =>{
         const fetchProperties = async() => {
-            const response = await fetch('/api/properties')
+            const response = await fetch('/api/properties', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
             const json = await response.json()
 
             if (response.ok){
@@ -29,7 +36,7 @@ const Home = () => {
 
         fetchProperties()
 
-    }, [dispatch])
+    }, [dispatch, user])
 
 
     return (
