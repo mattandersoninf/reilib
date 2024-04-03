@@ -22,6 +22,8 @@ export const useSignUp = () => {
 
         const json = await response.json();
 
+        console.log(json)
+
         console.log("response: ", response);
         console.log("JSON: ", json);
 
@@ -31,7 +33,7 @@ export const useSignUp = () => {
         }
         if(response.ok){
 
-            // save the user to local storage
+            // save the json token to local storage
             localStorage.setItem('user', JSON.stringify(json))
 
             // update auth context

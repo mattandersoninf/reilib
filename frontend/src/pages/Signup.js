@@ -6,7 +6,7 @@ import { useSignUp } from "../hooks/useSignUp";
 const SignUp = () => {
     const [Email, setEmail] = useState('');
     const [Password, setPassword] = useState('');
-    const {signup, isLoading, error} = useSignUp();
+    const {signup, error, isLoading} = useSignUp();
 
     const handleSubmit = async (e) => {
 
