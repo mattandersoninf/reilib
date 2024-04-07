@@ -28,7 +28,9 @@ app.get('/', (req, res) => {
 });
 
 // routes
+// properties route
 app.use('/api/properties', propertyRoutes);
+// users route
 app.use('/api/users', userRoutes)
 
 //connect to mongodb

@@ -24,26 +24,7 @@ const {
 } = require('../controllers/propertyController')
 const requireAuth = require('../middleware/requireAuth')
 
-/*
-// TEST ROUTES
-router.get('/', (req,res) => {
-    res.json({mssg:'GET all properties'})
-})
-
-router.get('/:id', (req,res) => {
-    res.json({mssg:'GET a single propertY'})
-})
-
-router.delete('/:id', (req,res) => {
-    res.json({mssg:'DELETE a property'})
-})
-
-router.patch('/:id', (req,res) => {
-    res.json({mssg:'UPDATE a property'})
-})
-*/
-
-
+// set router object, this allows you to make requests and get responses
 const router = express.Router()
 
 // require authorization for all property routes
