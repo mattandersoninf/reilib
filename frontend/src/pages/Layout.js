@@ -1,6 +1,5 @@
 import React from 'react';
 import { useLocation, Routes, Route } from 'react-router-dom';
-import Navbar from '../components/Navbar';
 import languageData from './lang';
 import Home from './Home';
 import LogIn from './LogIn';
@@ -45,7 +44,6 @@ const Layout = ({ children }) => {
 
   return (
     <div style={{ backgroundImage, minHeight: '100vh' }}>
-        <Navbar/>
         <Routes>
             <Route
                 path = "/"

@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { usePropertiesContext } from "../hooks/usePropertiesContext";
-import { useAuthContext } from "../hooks/useAuthContext";
+// import { useAuthContext } from "../hooks/useAuthContext";
 
 const PropertyForm = () => {
   const { dispatch } = usePropertiesContext();
-  const user = useAuthContext();
+  // const user = useAuthContext();
   const [StreetAddress, setStreetAddress] = useState("");
   const [City, setCity] = useState("");
   const [StateOrProvince, setStateOrProvince] = useState("");
@@ -38,10 +38,12 @@ const PropertyForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    /*
     if (!user) {
       setError('You must be logged in');
       return
     }
+    */
 
     const separatedAddress = separateStreetAddress(StreetAddress);
 
@@ -63,7 +65,7 @@ const PropertyForm = () => {
         body: JSON.stringify(property),
         headers: {
           "Content-Type": "application/json",
-          'Authorization': `Bearer ${user.token}`
+          /*'Authorization': `Bearer ${user.token}`*/
         },
       });
 

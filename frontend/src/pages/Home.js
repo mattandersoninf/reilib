@@ -15,15 +15,16 @@ import PropertyDetails from "../components/PropertyDetails"
 
 const Home = () => {
 
+    
     const {properties, dispatch} = usePropertiesContext();
-    const {user} = useAuthContext();
+    // const {user} = useAuthContext();
 
     useEffect(() =>{
         const fetchProperties = async() => {
             const response = await fetch('/api/properties', {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${user.token}`
+                    // 'Authorization': `Bearer ${user.token}`
                 }
             })
             const json = await response.json()
@@ -36,19 +37,25 @@ const Home = () => {
 
         fetchProperties()
 
-    }, [dispatch, user])
+    }, [dispatch
+        //, user
+    ])
 
 
     return (
         <div className="home">
+            <h2>Home</h2>
+            {/*
             <div className="properties">
                 {properties && properties.map((property) => (
                     <PropertyDetails key={property._id} property={property}/>
                 ))}
             </div>
+                */}
         
         </div>
     )
+
 }
 
 

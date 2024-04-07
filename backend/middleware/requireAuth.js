@@ -1,5 +1,9 @@
-// requireAuth.js
+/* requireAuth.js
 
+This file is to establish the use of jwt. This will help control what
+each indivdual user will be able to view on the website.
+
+*/
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 

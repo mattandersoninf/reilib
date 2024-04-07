@@ -1,3 +1,13 @@
+/* propertyController.js
+
+This file will contain all of the functions that allow you to
+interact with the mongodb database via the webpage and leveraging
+the routes established. It's not part of the routes file for the 
+sake of organization. 
+
+
+*/
+
 const Property = require('../models/propertyModel')
 const mongoose = require('mongoose')
 

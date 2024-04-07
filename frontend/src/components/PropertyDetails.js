@@ -1,7 +1,7 @@
 /* code block 5 */
 
 import { usePropertiesContext } from "../hooks/usePropertiesContext";
-import { useAuthContext } from "../hooks/useAuthContext";
+// import { useAuthContext } from "../hooks/useAuthContext";
 
 function reformatDate(dateString) {
     let date = new Date(dateString);
@@ -19,13 +19,13 @@ function reformatDate(dateString) {
 
 const PropertyDetails = ({property}) => {
 
-    const { dispatch } = usePropertiesContext();
+    // const { dispatch } = usePropertiesContext();
 
-    const user = useAuthContext();
+    // const user = useAuthContext();
 
     const handleClick =  async() => {
 
-        if(!user){
+        /* if(!user){
             return
         }
 
@@ -36,6 +36,7 @@ const PropertyDetails = ({property}) => {
             }
 
         })
+        
 
         const json = await response.json()
 
@@ -44,6 +45,8 @@ const PropertyDetails = ({property}) => {
             dispatch({type:'DELETE_PROPERTY', payload: json})
 
         }
+        */
+       console.log("button has been clicked")
 
     }
 
