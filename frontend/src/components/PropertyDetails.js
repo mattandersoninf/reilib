@@ -18,7 +18,7 @@ function reformatDate(dateString) {
 
 const PropertyDetails = ({property}) => {
 
-    // const { dispatch } = usePropertiesContext();
+    const { dispatch } = usePropertiesContext();
 
     // const user = useAuthContext();
 
@@ -30,27 +30,24 @@ const PropertyDetails = ({property}) => {
 
         */
 
-        
-        /*
+
         const response = await fetch('/api/properties/' + property._id, {
-            method: 'DELETE',
+            method: 'DELETE'
+            /*,
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
+            */
 
         })
-        */
-        
-        /*
 
         const json = await response.json()
 
         if (response.ok){
 
-            // dispatch({type:'DELETE_PROPERTY', payload: json})
+            dispatch({type:'DELETE_PROPERTY', payload: json})
 
         }
-        */
 
        console.log("button has been clicked")
 
