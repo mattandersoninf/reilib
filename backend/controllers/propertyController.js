@@ -26,6 +26,7 @@ const getProperty = async (req, res) => {
       // Grab your search parameters
       const { id } = req.params;
   
+      // verify that you received an object from the mongo server
       if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).json({ error: 'Invalid property ID.' });
       }
@@ -33,10 +34,13 @@ const getProperty = async (req, res) => {
       // Search for the intended property given the parameters
       const property = await Property.findById(id);
   
+      // throw this error if you couldn't find the specific property you were searching for
       if (!property) {
         return res.status(404).json({ error: 'Property not found.' });
       }
-  
+
+      // if it passed the previous check, you foudn the property you were looking for so you receive
+      // the response and pass it into a json object
       res.status(200).json(property);
     } catch (error) {
       console.error('Error retrieving property:', error);

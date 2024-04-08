@@ -5,7 +5,6 @@ import { usePropertiesContext } from "../hooks/usePropertiesContext";
 
 function reformatDate(dateString) {
     let date = new Date(dateString);
-    
     let hours = date.getHours().toString().padStart(2, '0');
     let minutes = date.getMinutes().toString().padStart(2, '0');
     let seconds = date.getSeconds().toString().padStart(2, '0')
@@ -29,6 +28,10 @@ const PropertyDetails = ({property}) => {
             return
         }
 
+        */
+
+        
+        /*
         const response = await fetch('/api/properties/' + property._id, {
             method: 'DELETE',
             headers: {
@@ -36,16 +39,19 @@ const PropertyDetails = ({property}) => {
             }
 
         })
+        */
         
+        /*
 
         const json = await response.json()
 
         if (response.ok){
 
-            dispatch({type:'DELETE_PROPERTY', payload: json})
+            // dispatch({type:'DELETE_PROPERTY', payload: json})
 
         }
         */
+
        console.log("button has been clicked")
 
     }

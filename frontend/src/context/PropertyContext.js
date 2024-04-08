@@ -1,4 +1,8 @@
-/* code block 7 */
+/* PropertyContext.js */
+
+/* this is used when data is passed on the webpage. In this context,
+when a new property is added to the database, the page's state will change
+to reflect that */
 
 import { createContext, useReducer } from "react";
 
