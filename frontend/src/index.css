@@ -51,6 +51,12 @@ code {
   monospace;
 }
 
+.home {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 100px;
+}
+
 .property-details{
   background: #fff;
   border-radius: 4px;
@@ -71,6 +77,17 @@ code {
   margin: 0;
   font-size: 0.9em;
   color: #555;
+}
+
+.property details span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
 }
 
 

@@ -3,8 +3,9 @@
 import { usePropertiesContext } from "../hooks/usePropertiesContext";
 // import { useAuthContext } from "../hooks/useAuthContext";
 //date fns
-// import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
+/*
 function reformatDate(dateString) {
     let date = new Date(dateString); 
     let hours = date.getHours().toString().padStart(2, '0');
@@ -16,7 +17,7 @@ function reformatDate(dateString) {
     
     return `${hours}:${minutes}:${seconds}, ${month}/${day}/${year}`;
 } 
-
+*/ 
 
 const PropertyDetails = ({property}) => {
 
@@ -74,7 +75,10 @@ const PropertyDetails = ({property}) => {
             <p><strong>Total Bathrooms: </strong>{
                 property.BathroomsTotalDecimal
             }</p>
-            <p><strong>Upload Date: </strong>{reformatDate(property.createdAt)}</p>
+            <p>{formatDistanceToNow(new Date(property.createdAt), {addSuffix:true} )}</p>
+            {
+                //{reformatDate(property.createdAt)}
+            }
             <span className="material-symbols-outlined" onClick={handleClick}>Delete</span>
         </div>
     )
