@@ -1,10 +1,12 @@
-/* code block 5 */
+
 
 import { usePropertiesContext } from "../hooks/usePropertiesContext";
 // import { useAuthContext } from "../hooks/useAuthContext";
+//date fns
+// import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 function reformatDate(dateString) {
-    let date = new Date(dateString);
+    let date = new Date(dateString); 
     let hours = date.getHours().toString().padStart(2, '0');
     let minutes = date.getMinutes().toString().padStart(2, '0');
     let seconds = date.getSeconds().toString().padStart(2, '0')
@@ -13,7 +15,7 @@ function reformatDate(dateString) {
     let year = date.getFullYear();
     
     return `${hours}:${minutes}:${seconds}, ${month}/${day}/${year}`;
-}
+} 
 
 
 const PropertyDetails = ({property}) => {
@@ -49,7 +51,6 @@ const PropertyDetails = ({property}) => {
 
         }
 
-       console.log("button has been clicked")
 
     }
 
@@ -74,7 +75,7 @@ const PropertyDetails = ({property}) => {
                 property.BathroomsTotalDecimal
             }</p>
             <p><strong>Upload Date: </strong>{reformatDate(property.createdAt)}</p>
-            <span onClick={handleClick}>Delete</span>
+            <span className="material-symbols-outlined" onClick={handleClick}>Delete</span>
         </div>
     )
 }

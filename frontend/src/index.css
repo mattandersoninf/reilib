@@ -73,17 +73,7 @@ code {
   color: #555;
 }
 
-.property-details span{
-  position: absolute;
-  top: 20px;
-  right: px;
-  cursor: pointer;
-  background: #f1f1f1;
-  padding: 6px;
-  border-radius: 50%;
-  color: #333;
 
-}
 
 /* new property form */
 
@@ -119,6 +109,13 @@ div.error{
   margin: 20px 0;
 }
 
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
 
 /*
 
