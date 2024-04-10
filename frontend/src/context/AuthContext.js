@@ -1,5 +1,10 @@
 
-// authContext
+/* authContext
+
+this authentication context will require you to be a logged in user to
+access certain information on the site
+
+*/
 
 import { createContext, useEffect, useReducer } from "react";
 
@@ -25,12 +30,23 @@ export const AuthContextProvider = ({ children }) => {
         user:null
     })
 
-    // once you've logged in, you want to maintain the user information in the Authcontext
-    // by using the useEffect function, this will check your local storage to see any set
-    // set values and if a user already exists in there because you'd already logged in,
-    // the Authcontext will grab that
+    /* 
+     once you've logged in, you want to maintain the user information in the Authcontext
+     by using the useEffect function, this will check your local storage to see any set
+     set values and if a user already exists in there because you'd already logged in,
+     the Authcontext will grab that
+    */
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'));
+
+
+        /*
+
+        the dispatch will allow you to make changes to the webpage
+        and the webpage will update once those changes have been
+        sent to the backend server
+
+        */
 
         if (user) {
             dispatch({type: 'LOGIN', payload: user})

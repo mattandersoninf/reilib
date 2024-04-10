@@ -31,22 +31,22 @@ const Navbar = () => {
                     <h1>REILib</h1>
                 </Link>
                     {/*user && (*/}
-                        <div>
-                            <ul>
-                                {/*<span>{user.Email}</span>*/}
-                    
-                                <Link to="/newProp"><li>Add New Property</li></Link>
+                <div>
+                        {/*<span>{user.Email}</span>*/}
+            
+                        <Link to="/newProp"><li>Add New Property</li></Link>
 
-                                <button onClick={handleClick} className="logout">Log Out</button>
-                            </ul>
-                        </div>
+                        <button onClick={handleClick} className="logout">Log Out</button>
+                </div>
                     {/*)}}*/}
                     {/*{!user && (*/}
-                        <ul>
-                            <Link to="/login"><li>Login</li></Link>
-                            <Link to="/signup"><li>SignUp</li></Link>
-                            <Link to="/newProp"><li>Add New Property</li></Link>
-                        </ul>
+                <nav>
+                    <div>
+                        <Link to="/login"><li>Login</li></Link>
+                        <Link to="/signup"><li>SignUp</li></Link>
+                        <Link to="/newProp"><li>Add New Property</li></Link>
+                    </div>
+                </nav>
                     {/*})}*/}
             </div>
         </header>
