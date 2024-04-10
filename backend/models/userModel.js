@@ -4,7 +4,12 @@
 // communicate with mongodb server for properties
 
 const mongoose = require('mongoose')
+// the bcrypt library will be to generate the hash that hides
+// the password
 const bcrypt = require('bcrypt')
+// validator can be used to verify that the password is strong
+// or that the login/signup email that is entered is actually
+// an email
 const validator = require('validator')
 
 const Schema = mongoose.Schema

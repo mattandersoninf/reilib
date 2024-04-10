@@ -1,10 +1,6 @@
-
-/* codeblock 3 */
-
 // user controller
 
 const User = require('../models/userModel')
-const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 const createToken = (_id) =>{
@@ -21,10 +17,24 @@ const loginUser = async (req,res) => {
         const user = await User.login(Email, Password);
 
         // create token
+        // this will only allow users to view certain aspects of the website
+
+        /*
+        TOKEN EXAMPLE
+        abc.123.def
+        abc represents the header
+        123 represents the payload
+        def represents the signature
+        
+        */
 
         const token = createToken(user._id)
+
+
     
-        res.status(200).json({ Email, token })
+        res.status(200).json({ Email, user, token })
+
+        // console.log(user)
 
     } catch (error) {
 
@@ -49,7 +59,7 @@ const signupUser = async (req, res) => {
 
         const token = createToken(user._id)
     
-        res.status(200).json({ Email, token });
+        res.status(200).json({ Email, user, token });
 
     } catch (error) {
 
