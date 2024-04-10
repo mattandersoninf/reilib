@@ -37,6 +37,8 @@ export const AuthContextProvider = ({ children }) => {
      the Authcontext will grab that
     */
     useEffect(() => {
+        
+        
         const user = JSON.parse(localStorage.getItem('user'));
 
 

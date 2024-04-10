@@ -4,7 +4,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useLogout } from "../hooks/useLogout";
-// import { useAuthContext } from "../hooks/useAuthContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 
 const Navbar = () => {
@@ -18,7 +18,7 @@ const Navbar = () => {
     };
 
     const { logout } = useLogout();
-    // const { user } = useAuthContext();
+    const { user } = useAuthContext();
 
     const handleClick = () => {
         logout();
@@ -30,24 +30,25 @@ const Navbar = () => {
                 <Link to="/">
                     <h1>REILib</h1>
                 </Link>
-                    {/*user && (*/}
-                <div>
-                        {/*<span>{user.Email}</span>*/}
-            
-                        <Link to="/newProp"><li>Add New Property</li></Link>
-
-                        <button onClick={handleClick} className="logout">Log Out</button>
-                </div>
-                    {/*)}}*/}
-                    {/*{!user && (*/}
                 <nav>
+                    {user && (
                     <div>
-                        <Link to="/login"><li>Login</li></Link>
-                        <Link to="/signup"><li>SignUp</li></Link>
-                        <Link to="/newProp"><li>Add New Property</li></Link>
+                        <span>{user.Email}</span>
+
+                        <button onClick={handleClick} className="logout">Log out</button>
+
                     </div>
+                    
+                    )}
+                    {!user && (
+                        <div>
+                            <Link to="/login"><li>Login</li></Link>
+                            <Link to="/signup"><li>SignUp</li></Link>
+                            <Link to="/newProp"><li>Add New Property</li></Link>
+                        </div>
+                    )}
                 </nav>
-                    {/*})}*/}
+                    
             </div>
         </header>
     )

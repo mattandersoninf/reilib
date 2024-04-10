@@ -1,6 +1,6 @@
-/* code block 8 */
+/* useAuth context hook*/
 
-/*
+
 import { AuthContext } from "../context/AuthContext"; 
 import { useContext } from "react";
 
@@ -13,4 +13,4 @@ export const useAuthContext = () => {
 
     return context
 }
-*/
+
