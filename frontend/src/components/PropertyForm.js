@@ -1,12 +1,12 @@
-/* code block 6 */
+/* PropertyForm.js */
 
 import { useState } from "react";
 import { usePropertiesContext } from "../hooks/usePropertiesContext";
-// import { useAuthContext } from "../hooks/useAuthContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const PropertyForm = () => {
   const { dispatch } = usePropertiesContext();
-  // const user = useAuthContext();
+  const user = useAuthContext();
   const [StreetAddress, setStreetAddress] = useState("");
   const [City, setCity] = useState("");
   const [StateOrProvince, setStateOrProvince] = useState("");
@@ -36,14 +36,20 @@ const PropertyForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
+           
+    console.log('You called the user token to fetch properties on the home page.')
+    console.log('User token from property form:',user.user.token)
 
-    /*
+    // we don't want to try anything if you're not even
+    // logged in so this checks if you're logged in before even doing
+    // anything else
     if (!user) {
       setError('You must be logged in');
       return
     }
-    */
+    
 
     const separatedAddress = separateStreetAddress(StreetAddress);
 
@@ -65,7 +71,7 @@ const PropertyForm = () => {
         body: JSON.stringify(property),
         headers: {
           "Content-Type": "application/json",
-          /*'Authorization': `Bearer ${user.token}`*/
+          'Authorization': `Bearer ${user.user.token}`
         },
       });
 

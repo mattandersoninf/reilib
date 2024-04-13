@@ -13,6 +13,8 @@ const requireAuth = async(req, res, next) => {
 
     const { authorization } = req.headers;
 
+    console.log("Authorization: ",authorization);
+
     if (!authorization){
         return res.status(401).json({error: 'Authorization token required.'});
 
@@ -23,9 +25,17 @@ const requireAuth = async(req, res, next) => {
     // since we just want the token, split it act the string and 
     // grab the token store it in 'token'
     const token = authorization.split(' ')[1];
+    
+    console.log("Bearer token:",token);
 
     try{
+
+        
+        console.log("at this point in the requireAuth, you can see the token.")
+        console.log(token)
+
         const {_id} = jwt.verify(token, process.env.SECRET);
+
 
         // at this point we only need the user id to verify
         // what information we can see on the page, we don't need

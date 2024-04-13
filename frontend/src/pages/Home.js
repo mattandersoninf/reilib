@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePropertiesContext } from "../hooks/usePropertiesContext";
-// import { useAuthContext } from "../hooks/useAuthContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 
 // components
@@ -13,19 +13,30 @@ const Home = () => {
 
     // const [properties, setProperties] = useState(null);
     const {properties, dispatch} = usePropertiesContext();
-    // const {user} = useAuthContext();
+    const {user} = useAuthContext();
+
+    console.log('User AuthContext on the Home page:', user);
 
     useEffect(() =>{
+
         const fetchProperties = async() => {
-            const response = await fetch('/api/properties'
-                /*, {
+
+            const response = await fetch('/api/properties', {
+
                 headers: {
                     'Content-Type': 'application/json',
-                    // 'Authorization': `Bearer ${user.token}`
+                    'Authorization': `Bearer ${user.token}`
                 }
+
             }
-            */
+            
            )
+
+           
+           console.log('You called the user token to fetch properties on the home page.')
+           console.log('User token from home page:',user.token)
+           console.log('fetchprop response:',response.headers)
+
             const json = await response.json()
 
 
@@ -35,15 +46,13 @@ const Home = () => {
             }
 
         }
+        if (user){
+            fetchProperties();
+        }
 
-        fetchProperties()
-    },[])
+    },[dispatch, user])
 
-/*
-    }, [dispatch
-        //, user
-    ])
-*/
+
 
     return (
         <div className="home">

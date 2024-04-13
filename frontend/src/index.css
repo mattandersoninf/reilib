@@ -124,6 +124,7 @@ div.error{
   border: 1px solid var(--error);
   border-radius: 4px;
   margin: 20px 0;
+  color: var(--error);
 }
 
 .material-symbols-outlined {

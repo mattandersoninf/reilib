@@ -1,7 +1,7 @@
 
 
 import { usePropertiesContext } from "../hooks/usePropertiesContext";
-// import { useAuthContext } from "../hooks/useAuthContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 //date fns
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
@@ -23,24 +23,22 @@ const PropertyDetails = ({property}) => {
 
     const { dispatch } = usePropertiesContext();
 
-    // const user = useAuthContext();
+    const user = useAuthContext();
+
+    console.log("User AuthContext in PropertyDetails: ", user)
 
     const handleClick =  async() => {
 
-        /* if(!user){
+        if(!user){
             return
         }
 
-        */
-
 
         const response = await fetch('/api/properties/' + property._id, {
-            method: 'DELETE'
-            /*,
+            method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
-            */
 
         })
 
