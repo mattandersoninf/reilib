@@ -23,7 +23,7 @@ const PropertyDetails = ({property}) => {
 
     const { dispatch } = usePropertiesContext();
 
-    const user = useAuthContext();
+    const { user } = useAuthContext();
 
     
     console.log("User AuthContext in PropertyDetails: ", user)
@@ -41,7 +41,7 @@ const PropertyDetails = ({property}) => {
             {
                 method: 'DELETE',
                 headers: {
-                    'Authorization': `Bearer ${user.user.token}`
+                    'Authorization': `Bearer ${user.token}`
                 }
         
             }

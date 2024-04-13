@@ -9,12 +9,10 @@ export const useLogin = () => {
     const { dispatch } = useAuthContext();
 
     const login = async (Email, Password) => {
+        
         setIsLoading(true)
         setError(null)
         
-        /*
-        console.log("Sending data to server: ", {Email, Password});
-        */
 
         const response = await fetch('/api/users/login', {
             method: "POST",

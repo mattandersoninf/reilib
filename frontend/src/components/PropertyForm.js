@@ -6,7 +6,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 
 const PropertyForm = () => {
   const { dispatch } = usePropertiesContext();
-  const user = useAuthContext();
+  const { user } = useAuthContext();
   const [StreetAddress, setStreetAddress] = useState("");
   const [City, setCity] = useState("");
   const [StateOrProvince, setStateOrProvince] = useState("");
@@ -36,13 +36,19 @@ const PropertyForm = () => {
   };
 
   const handleSubmit = async (e) => {
+
+    
+    console.log("handleSubmit is firing.")
     
     e.preventDefault();
 
-    // we don't want to try anything if you're not even
-    // logged in so this checks if you're logged in before even doing
-    // anything else
+    /* we don't want to try anything if you're not even
+     logged in so this checks if you're logged in before even doing
+     anything else
+     */
+
     if (!user) {
+      console.log("The log in check is happening.")
       setError('You must be logged in');
       return
     }
@@ -68,7 +74,7 @@ const PropertyForm = () => {
         body: JSON.stringify(property),
         headers: {
           "Content-Type": "application/json",
-          'Authorization': `Bearer ${user.user.token}`
+          'Authorization': `Bearer ${user.token}`
         },
       });
 
@@ -76,8 +82,12 @@ const PropertyForm = () => {
 
       // handling empty parameters
       if (!response.ok) {
+
         setError(json.error);
+        console.log("THis is the error of trying to submit on property form without logging in: ",error);
+      
       } else {
+
         setStreetAddress("");
         setCity("");
         setStateOrProvince("");
@@ -90,9 +100,12 @@ const PropertyForm = () => {
         setEmptyFields([]);
         console.log("New property has been added");
         dispatch({type: "CREATE_PROPERTY", payload: json})
+
       }
     } catch (error) {
+
       console.error("Error submitting property:", error);
+      
     }
   };
 
