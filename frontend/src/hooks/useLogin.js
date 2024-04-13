@@ -24,7 +24,6 @@ export const useLogin = () => {
 
         const json = await response.json();
 
-        console.log("response: ", response);
         console.log("JSON: ", json);
 
         if(!response.ok){

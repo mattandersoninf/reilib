@@ -1,5 +1,5 @@
 /* code block 2 */
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 // import Layout from './pages/Layout';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';

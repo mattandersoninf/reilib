@@ -32,7 +32,7 @@ const loginUser = async (req,res) => {
 
 
     
-        res.status(200).json({ Email, user, token })
+        res.status(200).json({ Email, token })
 
         // console.log(user)
 
@@ -59,7 +59,7 @@ const signupUser = async (req, res) => {
 
         const token = createToken(user._id)
     
-        res.status(200).json({ Email, user, token });
+        res.status(200).json({ Email, token });
 
     } catch (error) {
 

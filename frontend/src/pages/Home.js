@@ -21,16 +21,17 @@ const Home = () => {
 
         const fetchProperties = async() => {
 
-            const response = await fetch('/api/properties', {
+            const response = await fetch('/api/properties', 
+                
+                {
 
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${user.token}`
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${user.token}`
+                    }
+
                 }
-
-            }
-            
-           )
+            )
 
            
            console.log('You called the user token to fetch properties on the home page.')

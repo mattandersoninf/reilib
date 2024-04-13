@@ -43,8 +43,6 @@ export const AuthContextProvider = ({ children }) => {
         
         const user = JSON.parse(localStorage.getItem('user'));
 
-        console.log("useEffect user state:", user.token);
-
 
         /*
 

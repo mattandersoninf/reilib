@@ -11,9 +11,10 @@ const requireAuth = async(req, res, next) => {
 
     // verify authentication
 
+    console.log("accessing requireAuth.");
+
     const { authorization } = req.headers;
 
-    console.log("Authorization: ",authorization);
 
     if (!authorization){
         return res.status(401).json({error: 'Authorization token required.'});

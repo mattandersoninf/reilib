@@ -38,9 +38,6 @@ const PropertyForm = () => {
   const handleSubmit = async (e) => {
     
     e.preventDefault();
-           
-    console.log('You called the user token to fetch properties on the home page.')
-    console.log('User token from property form:',user.user.token)
 
     // we don't want to try anything if you're not even
     // logged in so this checks if you're logged in before even doing

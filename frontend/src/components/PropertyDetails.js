@@ -25,22 +25,27 @@ const PropertyDetails = ({property}) => {
 
     const user = useAuthContext();
 
+    
     console.log("User AuthContext in PropertyDetails: ", user)
+    
 
     const handleClick =  async() => {
 
+        
         if(!user){
             return
         }
 
 
-        const response = await fetch('/api/properties/' + property._id, {
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ${user.token}`
+        const response = await fetch('/api/properties/' + property._id, 
+            {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${user.user.token}`
+                }
+        
             }
-
-        })
+        )
 
         const json = await response.json()
 
