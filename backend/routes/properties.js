@@ -22,13 +22,13 @@ const {
     deleteProperty,
     updateProperty
 } = require('../controllers/propertyController')
-//const requireAuth = require('../middleware/requireAuth')
+const requireAuth = require('../middleware/requireAuth')
 
 // set router object, this allows you to make requests and get responses
 const router = express.Router()
 
 // require authorization for all property routes
-// router.use(requireAuth)
+router.use(requireAuth)
 
 
 //GET ALL properties

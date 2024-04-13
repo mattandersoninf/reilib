@@ -1,5 +1,8 @@
 // useLogout.js
 
+/* this will allow the state of the page to change
+    when users interact with the webpage
+*/ 
 import { useAuthContext } from "./useAuthContext";
 
 export const useLogout = () => {
