@@ -30,6 +30,8 @@ export const AuthContextProvider = ({ children }) => {
         user:null
     })
 
+    console.log('AuthContext state: ', state);
+
     /* 
      once you've logged in, you want to maintain the user information in the Authcontext
      by using the useEffect function, this will check your local storage to see any set

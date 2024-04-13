@@ -28,6 +28,7 @@ export const useSignUp = () => {
         console.log("response: ", response);
         console.log("JSON: ", json);
 
+        
         */
 
         if(!response.ok){
