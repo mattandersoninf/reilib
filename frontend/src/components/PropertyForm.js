@@ -36,9 +36,6 @@ const PropertyForm = () => {
   };
 
   const handleSubmit = async (e) => {
-
-    
-    console.log("handleSubmit is firing.")
     
     e.preventDefault();
 
@@ -48,7 +45,6 @@ const PropertyForm = () => {
      */
 
     if (!user) {
-      console.log("The log in check is happening.")
       setError('You must be logged in');
       return
     }
@@ -84,7 +80,6 @@ const PropertyForm = () => {
       if (!response.ok) {
 
         setError(json.error);
-        console.log("THis is the error of trying to submit on property form without logging in: ",error);
       
       } else {
 
@@ -105,7 +100,7 @@ const PropertyForm = () => {
     } catch (error) {
 
       console.error("Error submitting property:", error);
-      
+
     }
   };
 

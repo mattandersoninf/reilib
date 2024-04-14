@@ -26,7 +26,7 @@ const PropertyDetails = ({property}) => {
     const { user } = useAuthContext();
 
     
-    console.log("User AuthContext in PropertyDetails: ", user)
+    // console.log("User AuthContext in PropertyDetails: ", user)
     
 
     const handleClick =  async() => {

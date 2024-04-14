@@ -30,7 +30,7 @@ export const AuthContextProvider = ({ children }) => {
         user:null
     })
 
-    console.log('AuthContext state: ', state);
+    // console.log('AuthContext state: ', state);
 
     /* 
      once you've logged in, you want to maintain the user information in the Authcontext

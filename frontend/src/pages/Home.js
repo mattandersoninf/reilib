@@ -15,7 +15,6 @@ const Home = () => {
     const {properties, dispatch} = usePropertiesContext();
     const {user} = useAuthContext();
 
-    console.log('User AuthContext on the Home page:', user);
 
     useEffect(() =>{
 
@@ -32,11 +31,6 @@ const Home = () => {
 
                 }
             )
-
-           
-            console.log('You called the user token to fetch properties on the home page.')
-            console.log('User token from home page:',user.token)
-            console.log('fetchprop response:',response.headers)
 
             const json = await response.json()
 
@@ -64,8 +58,6 @@ const Home = () => {
                 ))}
             </div>
             
-            <PropertyForm/>
-
         </div>
     )
 

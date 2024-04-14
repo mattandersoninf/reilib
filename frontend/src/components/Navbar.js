@@ -34,6 +34,8 @@ const Navbar = () => {
                     {user && (
                     <div>
                         <span>{user.Email}</span>
+                         
+                        <Link to="/newProp"><li>Add New Property</li></Link>
 
                         <button onClick={handleClick} className="logout">Log out</button>
 
@@ -44,7 +46,6 @@ const Navbar = () => {
                         <div>
                             <Link to="/login"><li>Login</li></Link>
                             <Link to="/signup"><li>SignUp</li></Link>
-                            <Link to="/newProp"><li>Add New Property</li></Link>
                         </div>
                     )}
                 </nav>

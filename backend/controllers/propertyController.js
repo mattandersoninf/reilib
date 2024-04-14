@@ -14,8 +14,13 @@ const mongoose = require('mongoose')
 // get all properties
 
 const getProperties = async(req,res) => {
-    //return all of the properties in the db sorted by last created date
-    const properties = await Property.find({}).sort({createdAt: -1})
+    // return all of the properties 
+    // associated with the logged in user
+    // in the db sorted by last created date
+    
+    const user_id = req.user._id
+    
+    const properties = await Property.find({user_id}).sort({createdAt: -1})
 
     res.status(200).json(properties)
 }
@@ -112,6 +117,8 @@ const createProperty = async (req, res) => {
     // add doc to db
 
     try{
+      const user_id = req.user._id;
+      console.log("User id: ",user_id);
       const property = await Property.create({
           StreetNumber, 
           StreetName, 
@@ -121,7 +128,8 @@ const createProperty = async (req, res) => {
           ListPrice, 
           LivingArea, 
           BedroomsTotal, 
-          BathroomsTotalDecimal})
+          BathroomsTotalDecimal,
+          user_id})
       res.status(200).json(property)
     } catch (error){
         console.log('Error posting to server:'+error.message)

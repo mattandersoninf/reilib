@@ -11,8 +11,6 @@ const requireAuth = async(req, res, next) => {
 
     // verify authentication
 
-    console.log("accessing requireAuth.");
-
     const { authorization } = req.headers;
 
 
@@ -27,13 +25,12 @@ const requireAuth = async(req, res, next) => {
     // grab the token store it in 'token'
     const token = authorization.split(' ')[1];
     
-    console.log("Bearer token:",token);
 
     try{
 
         
-        console.log("at this point in the requireAuth, you can see the token.")
-        console.log(token)
+        // console.log("at this point in the requireAuth, you can see the token.")
+        // console.log(token)
 
         const {_id} = jwt.verify(token, process.env.SECRET);
 

@@ -1,6 +1,6 @@
 /* code block 2 */
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-// import Layout from './pages/Layout';
+import { useAuthContext } from './hooks/useAuthContext';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import LogIn from './pages/LogIn';
@@ -8,6 +8,9 @@ import SignUp from './pages/SignUp';
 import AddNewProperty from './pages/AddNewProperty';
 
 function App () {
+
+  const { user } = useAuthContext();
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -17,17 +20,17 @@ function App () {
 
               <Route
                 path="/"
-                element={<Home/>}
+                element={user ? <Home/> : <Navigate to="/login"/>}
               />
 
               <Route
                 path="/login"
-                element={<LogIn/>}
+                element={!user ? <LogIn/> : <Navigate to="/"/>}
               />
               
               <Route
                 path="/signup"
-                element={<SignUp/>}
+                element={!user ? <SignUp/> : <Navigate to="/"/>}
               />
 
               <Route

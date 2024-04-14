@@ -12,7 +12,7 @@ export const useSignUp = () => {
         setIsLoading(true)
         setError(null)
 
-        console.log("Sending data to server: ", {Email, Password});
+        // console.log("Sending data to server: ", {Email, Password});
 
         const response = await fetch('/api/users/signup', {
             method: "POST",
@@ -22,14 +22,6 @@ export const useSignUp = () => {
 
         const json = await response.json();
 
-        /*
-        console.log(json)
-
-        console.log("response: ", response);
-        console.log("JSON: ", json);
-
-        
-        */
 
         if(!response.ok){
             setIsLoading(false)

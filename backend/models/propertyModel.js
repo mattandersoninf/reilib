@@ -46,6 +46,10 @@ const propertySchema =  new Schema({
     BathroomsTotalDecimal: {
         type: Number,
         require: true
+    },
+    user_id:{
+        type: String,
+        required: true
     }
     /*
     PropertyType: {
