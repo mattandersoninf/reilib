@@ -9,6 +9,16 @@ const mongoose = require('mongoose')
 // post the object
 const Schema = mongoose.Schema
 
+// separate schema for images associated with a property
+
+const ImageSchema = new Schema({
+    url: String, 
+    filename: String
+})
+ImageSchema.virtual('thumbnail').get(function(){
+    return this.url.replace('/upload', '/upload/w_300');
+})
+
 const propertySchema =  new Schema({
     StreetNumber: {
         type: String,
@@ -50,13 +60,13 @@ const propertySchema =  new Schema({
     user_id:{
         type: String,
         required: true
-    }
-    /*
-    PropertyType: {
-        type: String,
-        require:true
     },
-    */
+    Analyses: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Analysis'
+        }
+    ]
 
 }, {timestamps: true})
 

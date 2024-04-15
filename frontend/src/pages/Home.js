@@ -1,13 +1,12 @@
 // home page
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { usePropertiesContext } from "../hooks/usePropertiesContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 
 // components
 import PropertyDetails from "../components/PropertyDetails";
-import PropertyForm from "../components/PropertyForm";
 
 const Home = () => {
 

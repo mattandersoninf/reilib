@@ -8,8 +8,8 @@ sake of organization.
 
 */
 
-const Property = require('../models/propertyModel')
 const mongoose = require('mongoose')
+const Property = require('../models/propertyModel')
 
 // get all properties
 
