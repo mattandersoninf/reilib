@@ -24,7 +24,7 @@ const{
 router.post('/',createAnalysis);
 
 // DELETE analysis
-router.delete('/:analysis_id', deleteAnalysis)
+router.delete('/:id', deleteAnalysis)
 
 //UPDATE analysis
 // router.patch(':/analysis_id', updateAnalysis)
