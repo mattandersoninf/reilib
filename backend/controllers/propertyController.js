@@ -148,12 +148,20 @@ const deleteProperty = async (req, res) => {
       }
   
       const property = await Property.findOneAndDelete({ _id: id })
+
+      // delete all analyses associated with this property
+      if(property.Analyses.length){
+        await Analysis.deleteMany({_id: {$in: property.Analyses}});
+      }
   
       if (!property) {
         return res.status(404).json({ error: 'Property not found.' })
       }
   
       res.status(200).json(property);
+
+      // once you've deleted the property, navigate back home  
+      res.redirect('/');
     } catch (error) {
       console.error('Error deleting property:', error);
       res.status(500).json({ error: 'Internal Server Error' })

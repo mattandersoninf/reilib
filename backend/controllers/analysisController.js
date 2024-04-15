@@ -56,8 +56,9 @@ const getAnalysis = async (req, res) => {
 // create analysis
 const createAnalysis = async (req,res) =>{
 
+    // given the id of the property you want to add analysis to
     const {id} = req.params;
-    const foundAnalysis = await Property.findById(id);
+    const foundProperty = await Property.findById(id);
     
 
     const {
@@ -272,6 +273,18 @@ const createAnalysis = async (req,res) =>{
             Author
             //,user_id
         })
+
+        // put the user id as the author of this review
+        analysis.Author = req.user._id;
+
+        foundProperty.Analyses.push(analysis);
+        await analysis.save();
+        await foundProperty.save();
+
+        req.flash('success', 'Successfully added your analysis!');
+
+        res.redirect(`/properties/$(foundProperty._id`);
+
         res.status(200).json(analysis)
       } catch (error){
           console.log('Error posting to server:'+error.message)
@@ -303,8 +316,88 @@ const deleteAnalysis = async (req, res) => {
 }
 
 
+// update a property
+const updateAnalysis = async (req, res) => {
+    try {
+      const { id } = req.params;
+  
+      if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ error: 'Invalid property ID.' });
+      }
+  
+      const allowedFields = [
+        PurchasePrice,
+        AnnualPropertyTaxes,
+        AmortizationPeriod,
+        // Loan Details
+        DownPaymentPercentage,
+        LoanDuration,
+        // Closing Costs
+        TitleAndEscrowFees,
+        OtherFees,
+        // Income
+        Rent,
+        OtherIncome,
+        // Future Assumptions
+        RentEscalationPercentage,
+        MarketApprecationPercentage,
+        Inflation,
+        PropertySalesCostsPercentage,
+        // Monthly Expenses
+        Electricity,
+        Water,
+        Sewer,
+        Trash,
+        HOA,
+        MonthlyInsurance,
+        VacanyPercentage,
+        RepairsAndMaintenancePercentage,
+        CapitalExpenditureMonthlyPercentage,
+        PropertyManagementPercentage,
+        // Uncertainty Range
+        RentRangePercentage,
+        VacancyRangePercentage,
+        OngoingRepairCosts,
+        CapitalExpenditureUncertaintyPercentage,
+        PropertyManagementUncertaintyPercentage,
+        Year1Input,
+        Year2Input,
+        Year3Input,
+        Body
+        ];
+    const updates = {};
+
+    // Apply updates only for allowed fields
+    for (const field of Object.keys(req.body)) {
+      if (allowedFields.includes(field)) {
+        updates[field] = req.body[field];
+      }
+    }
+  
+      if (Object.keys(updates).length === 0) {
+        return res.status(400).json({ error: 'No valid fields to update.' });
+      }
+  
+      const analysis = await Analysis.findOneAndUpdate({ _id: id }, updates, {
+        new: true,
+      });
+  
+      if (!analysis) {
+        return res.status(404).json({ error: 'Analysis not found.' });
+      }
+  
+      res.status(200).json(property);
+    } catch (error) {
+      console.error('Error updating analysis:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
+
+
+
 module.exports = {
     createAnalysis,
-    deleteAnalysis
+    deleteAnalysis,
+    updateAnalysis
 
 }
