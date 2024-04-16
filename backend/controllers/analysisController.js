@@ -57,8 +57,15 @@ const getAnalysis = async (req, res) => {
 const createAnalysis = async (req,res) =>{
 
     // given the id of the property you want to add analysis to
+    console.log("req.params:",req.params);
+
+    // pass in the id of othe property you want to link this analysis to
     const {id} = req.params;
-    const foundProperty = await Property.findById(id);
+
+
+    const foundProperty = await Property.findById("661e0c5e585872d268e5d759");
+
+    console.log("foundProperty:", foundProperty);
     
 
     const {
@@ -102,6 +109,9 @@ const createAnalysis = async (req,res) =>{
         Body,
         Author
      } = req.body
+
+    console.log("formed req-body", req.body)
+
 
      let emptyFields = [];
 
@@ -229,7 +239,7 @@ const createAnalysis = async (req,res) =>{
       }
 
       try{
-        //const user_id = req.user._id;
+        console.log("attempting to form analysis object")
         //console.log("User id: ",user_id);
         const analysis = await Analysis.create({
             PurchasePrice,
@@ -274,16 +284,20 @@ const createAnalysis = async (req,res) =>{
             //,user_id
         })
 
+        console.log("foundProperty user_id", foundProperty.user_id);
         // put the user id as the author of this review
-        analysis.Author = req.user._id;
+        analysis.Author = foundProperty.user_id;
 
+        console.log("attempting to establish new analysis object to foundProperty")
         foundProperty.Analyses.push(analysis);
+        console.log("attempted to push analysis to foundProperty")
+
         await analysis.save();
+        console.log("attempted to save analysis")
+
         await foundProperty.save();
 
-        req.flash('success', 'Successfully added your analysis!');
-
-        res.redirect(`/properties/$(foundProperty._id`);
+        //res.redirect(`/properties/$(foundProperty._id`);
 
         res.status(200).json(analysis)
       } catch (error){
@@ -296,11 +310,22 @@ const createAnalysis = async (req,res) =>{
 
 const deleteAnalysis = async (req, res) => {
     try {
+
       const { id } = req.params;
-  
+      
       if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).json({ error: 'Invalid analysis ID.' })
       }
+
+      /*------------------------------------------
+
+      find a way to pass in the property id
+
+      */
+      await Property.findByIdAndUpdate("661e0c5e585872d268e5d759", {$pull:{Analyses:id}})
+
+      // given the id of the analysis that you want to delete,
+      // first remove it from the property that you're 
   
       const analysis = await Analysis.findOneAndDelete({ _id: id })
   
