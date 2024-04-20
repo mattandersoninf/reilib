@@ -48,11 +48,22 @@ const loginUser = async (req,res) => {
 
 // signup user
 const signupUser = async (req, res) => {
-    const { Email, Password } = req.body;
-  
+
+    const { Email, Password, adminCode } = req.body;
+
     try {
 
-        const user = await User.signup(Email, Password);
+        var isAdmin = false;
+
+        if(adminCode === "secretcode123"){
+            isAdmin = true;
+        }
+
+        
+        const user = await User.signup(Email, Password, isAdmin);
+        
+
+        console.log(user.isAdmin)
 
         // create token
 

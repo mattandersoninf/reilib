@@ -24,7 +24,7 @@ const getAnalyses = async(req,res) => {
 */
 
 /*
-// get a single property
+// get a single analysis
 const getAnalysis = async (req, res) => {
     try {
       // Grab your search parameters
@@ -36,7 +36,7 @@ const getAnalysis = async (req, res) => {
       }
   
       // Search for the intended property given the parameters
-      const property = await Property.findById(id);
+      const analysis = await Analysis.findById(id);
   
       // throw this error if you couldn't find the specific property you were searching for
       if (!property) {
@@ -62,6 +62,9 @@ const createAnalysis = async (req,res) =>{
     // pass in the id of othe property you want to link this analysis to
     const {id} = req.params;
 
+
+    // replace hard coded sample ID with the following:
+    // req.property._id
 
     const foundProperty = await Property.findById("661e0c5e585872d268e5d759");
 
@@ -284,7 +287,10 @@ const createAnalysis = async (req,res) =>{
             //,user_id
         })
 
+
+        
         console.log("foundProperty user_id", foundProperty.user_id);
+        
         // put the user id as the author of this review
         analysis.Author = foundProperty.user_id;
 

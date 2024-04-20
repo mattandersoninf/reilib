@@ -201,6 +201,12 @@ const analysisSchema = new Schema({
         type: String,
         required: true
     }
+    /*
+    Author:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }
+    */
     
  
 },{timestamps: true})

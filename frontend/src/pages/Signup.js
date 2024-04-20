@@ -6,13 +6,14 @@ import { useSignUp } from "../hooks/useSignUp";
 const SignUp = () => {
     const [Email, setEmail] = useState('');
     const [Password, setPassword] = useState('');
+    const [adminCode, setAdminCode] = useState('');
     const {signup, error, isLoading} = useSignUp();
 
     const handleSubmit = async (e) => {
 
         e.preventDefault();
 
-        await signup(Email,Password);
+        await signup(Email,Password,adminCode);
     
     }
 
@@ -30,6 +31,12 @@ const SignUp = () => {
                 type="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 value={Password}
+            />
+            <label>Admin Code</label>
+            <input
+                type="adminCode"
+                onChange={(e) => setAdminCode(e.target.value)}
+                value={adminCode}
             />
 
             <button disabled ={isLoading}>Sign Up</button>
