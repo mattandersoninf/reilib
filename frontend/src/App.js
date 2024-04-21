@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import LogIn from './pages/LogIn';
 import SignUp from './pages/SignUp';
 import AddNewProperty from './pages/AddNewProperty';
+import PropertyPage from './pages/PropertyPage';
 
 function App () {
 
@@ -36,6 +37,11 @@ function App () {
               <Route
                 path="/newProp"
                 element={<AddNewProperty/>}
+              />
+
+              <Route
+                path="/properties/:propertyID"
+                element={<PropertyPage/>}
               />
 
             </Routes>

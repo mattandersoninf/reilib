@@ -1,9 +1,10 @@
 
-
 import { usePropertiesContext } from "../hooks/usePropertiesContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 //date fns
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import { Link } from "react-router-dom"; 
+
 
 /*
 function reformatDate(dateString) {
@@ -19,9 +20,9 @@ function reformatDate(dateString) {
 } 
 */ 
 
+
 const PropertyDetails = ({property}) => {
 
-    console.log(property)
 
     const { dispatch } = usePropertiesContext();
 
@@ -31,7 +32,7 @@ const PropertyDetails = ({property}) => {
     // console.log("User AuthContext in PropertyDetails: ", user)
     
 
-    const handleClick =  async() => {
+    const deleteProperty=  async() => {
 
         
         if(!user){
@@ -60,9 +61,48 @@ const PropertyDetails = ({property}) => {
 
     }
 
+    // get the 
+    const routeToPropertyPage = async() =>{
+
+        if(!user){
+            return
+        }
+
+        console.log("route to property firing with this id:", property._id)
+
+
+        const response = await fetch('/api/properties/' + property._id, 
+            {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+        
+            }
+        )
+
+        const json = await response.json()
+
+        
+
+        if (response.ok){
+
+            // navigate("/properties"+property._id)
+
+            console.log("thisis the json respone",json)
+
+            localStorage.setItem('property',JSON.stringify(json))
+
+        }
+
+    }
+
+    //href={"/properties/"+property._id}
+
     return (
         <div className="property-details" id={property._id}>
-            <a href={"/properties/"+property._id} id={property._id}>
+
+            <Link to={"/properties/"+property._id} id={property._id} onClick={routeToPropertyPage}>
                 <h4>{
                     property.StreetNumber+' '+property.StreetName+', '+property.City+', '+property.StateOrProvince+', '+property.PostalCode
                 }</h4>
@@ -85,9 +125,12 @@ const PropertyDetails = ({property}) => {
                 {
                     //{reformatDate(property.createdAt)}
                 }
-            </a>
+            </Link>
             
-            <span className="material-symbols-outlined" onClick={handleClick}>Delete</span>
+            {
+                // <span className="material-symbols-outlined" onClick={deleteProperty}>Delete</span>
+
+            }
 
 
         </div>
