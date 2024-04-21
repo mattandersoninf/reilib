@@ -34,7 +34,7 @@ function App () {
               />
 
               <Route
-                path="newProp"
+                path="/newProp"
                 element={<AddNewProperty/>}
               />
 

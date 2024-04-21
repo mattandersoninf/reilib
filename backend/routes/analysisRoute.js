@@ -21,7 +21,7 @@ const{
 // router.get('/', getAnalysis)
 
 // POST analysis
-router.post('/',createAnalysis);
+router.post('/:userID',createAnalysis);
 
 // DELETE analysis
 router.delete('/:id', deleteAnalysis)

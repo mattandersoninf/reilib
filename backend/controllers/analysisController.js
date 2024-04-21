@@ -113,7 +113,7 @@ const createAnalysis = async (req,res) =>{
         Author
      } = req.body
 
-    console.log("formed req-body", req.body)
+    // console.log("formed req-body", req.body)
 
 
      let emptyFields = [];
@@ -242,7 +242,7 @@ const createAnalysis = async (req,res) =>{
       }
 
       try{
-        console.log("attempting to form analysis object")
+        //console.log("attempting to form analysis object")
         //console.log("User id: ",user_id);
         const analysis = await Analysis.create({
             PurchasePrice,
@@ -288,18 +288,18 @@ const createAnalysis = async (req,res) =>{
         })
 
 
-        
-        console.log("foundProperty user_id", foundProperty.user_id);
+
+        // console.log("foundProperty user_id", foundProperty.user_id);
         
         // put the user id as the author of this review
         analysis.Author = foundProperty.user_id;
 
-        console.log("attempting to establish new analysis object to foundProperty")
+        // console.log("attempting to establish new analysis object to foundProperty")
         foundProperty.Analyses.push(analysis);
-        console.log("attempted to push analysis to foundProperty")
+        //console.log("attempted to push analysis to foundProperty")
 
         await analysis.save();
-        console.log("attempted to save analysis")
+        //console.log("attempted to save analysis")
 
         await foundProperty.save();
 

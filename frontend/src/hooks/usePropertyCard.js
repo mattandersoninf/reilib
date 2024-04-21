@@ -8,20 +8,19 @@ export const useLogin = () => {
     const [isLoading, setIsLoading] = useState(null);
     const { dispatch } = useAuthContext();
 
-    const login = async (Email, Password) => {
+    const property = async (PropertyID) => {
         
         setIsLoading(true)
         setError(null)
         
 
-        const response = await fetch('/api/users/login', {
-            method: "POST",
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({Email,Password})
+        const response = await fetch('/api/properties/'+PropertyID, {
+            method: "GET",
+            headers: {'Content-Type': 'application/json'}
         })
 
         const json = await response.json();
-        console.log("login json:",json)
+        console.log("proeprty json:",json)
 
         if(!response.ok){
             setIsLoading(false)
@@ -30,7 +29,7 @@ export const useLogin = () => {
         if(response.ok){
 
             // save the user to local storage
-            localStorage.setItem('user', JSON.stringify(json))
+            localStorage.setItem('property', JSON.stringify(json))
 
             // update auth context
             dispatch({type: 'LOGIN', payload:json})
@@ -42,5 +41,5 @@ export const useLogin = () => {
             
     }
 
-    return {login, isLoading, error}
+    return {property, isLoading, error}
 }

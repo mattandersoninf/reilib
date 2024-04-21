@@ -62,6 +62,8 @@ userSchema.statics.signup = async function(Email, Password, isAdmin) {
 
     const user = await this.create({ Email, Password: hash, isAdmin})
 
+
+
     return user
 
 }
@@ -76,6 +78,8 @@ userSchema.statics.login = async function(Email, Password){
     }
 
     const user = await this.findOne({ Email })
+
+    console.log("Static login method user response:", user)
 
     // if the user does not exist, prompt the user that the email is incorrect
     if (!user) {

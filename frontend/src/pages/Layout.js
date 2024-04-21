@@ -1,15 +1,20 @@
 import React from 'react';
-import { useLocation, Routes, Route } from 'react-router-dom';
+import { useLocation, Routes, Route, Navigate } from 'react-router-dom';
 import languageData from './lang';
 import Home from './Home';
 import LogIn from './LogIn';
 import SignUp from './SignUp';
-import Personal from './Personal';
+import { useAuthContext } from '../context/AuthContext';
 import AddNewProperty from './AddNewProperty';
+import PropertyPage from './PropertyPage';
 
 
 
 const Layout = ({ children }) => {
+
+  
+  const { user } = useAuthContext();
+
   const location = useLocation();
 
   // Function to get the background color based on the current pathname
@@ -39,36 +44,41 @@ const Layout = ({ children }) => {
 
   // const backgroundColor = getBackgroundColor(location.pathname);
 
-
-  
-
   return (
     <div style={{ backgroundImage, minHeight: '100vh' }}>
         <Routes>
-            <Route
-                path = "/"
-                element= {<Home/>}
-            />
-            <Route
+
+              <Route
+                path="/"
+                element={user ? <Home/> : <Navigate to="/login"/>}
+              />
+
+              <Route
                 path="/login"
-                element={<LogIn/>}
-            />
-            <Route
+                element={!user ? <LogIn/> : <Navigate to="/"/>}
+              />
+              
+              <Route
                 path="/signup"
-                element={<SignUp/>}
-            />
-            <Route
-                path="/personal"
-                element={<Personal/>}
-            />
-            <Route
-              path="/newProp"
-              element={<AddNewProperty/>}
-            />
-        </Routes>
-      <main>{children}</main>
+                element={!user ? <SignUp/> : <Navigate to="/"/>}
+              />
+
+              <Route
+                path="/newProp"
+                element={<AddNewProperty/>}
+              />
+            
+              <Route
+                path={"/properties/:propertyID"}
+                element={<PropertyPage/>}
+              />
+
+            </Routes>
+      
     </div>
   );
 };
+
+// <main>{children}</main>
 
 export default Layout;

@@ -21,6 +21,8 @@ function reformatDate(dateString) {
 
 const PropertyDetails = ({property}) => {
 
+    console.log(property)
+
     const { dispatch } = usePropertiesContext();
 
     const { user } = useAuthContext();
@@ -59,30 +61,35 @@ const PropertyDetails = ({property}) => {
     }
 
     return (
-        <div className="property-details">
-            <h4>{
-                property.StreetNumber+' '+property.StreetName+', '+property.City+', '+property.StateOrProvince+', '+property.PostalCode
-            }</h4>
-            <p><strong>Address: </strong>{
-                property.StreetNumber+' '+property.StreetName+', '+property.City+', '+property.StateOrProvince+', '+property.PostalCode
-            }</p>
-            <p><strong>List Price: </strong>{
-                property.ListPrice
-            }</p>
-            <p><strong>Living Area: </strong>{
-                property.LivingArea
-            }</p>
-            <p><strong>Total Bedrooms: </strong>{
-                property.BedroomsTotal
-            }</p>
-            <p><strong>Total Bathrooms: </strong>{
-                property.BathroomsTotalDecimal
-            }</p>
-            <p>{formatDistanceToNow(new Date(property.createdAt), {addSuffix:true} )}</p>
-            {
-                //{reformatDate(property.createdAt)}
-            }
+        <div className="property-details" id={property._id}>
+            <a href={"/properties/"+property._id} id={property._id}>
+                <h4>{
+                    property.StreetNumber+' '+property.StreetName+', '+property.City+', '+property.StateOrProvince+', '+property.PostalCode
+                }</h4>
+                <p><strong>Address: </strong>{
+                    property.StreetNumber+' '+property.StreetName+', '+property.City+', '+property.StateOrProvince+', '+property.PostalCode
+                }</p>
+                <p><strong>List Price: </strong>{
+                    property.ListPrice
+                }</p>
+                <p><strong>Living Area: </strong>{
+                    property.LivingArea
+                }</p>
+                <p><strong>Total Bedrooms: </strong>{
+                    property.BedroomsTotal
+                }</p>
+                <p><strong>Total Bathrooms: </strong>{
+                    property.BathroomsTotalDecimal
+                }</p>
+                <p>{formatDistanceToNow(new Date(property.createdAt), {addSuffix:true} )}</p>
+                {
+                    //{reformatDate(property.createdAt)}
+                }
+            </a>
+            
             <span className="material-symbols-outlined" onClick={handleClick}>Delete</span>
+
+
         </div>
     )
 }

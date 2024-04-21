@@ -54,6 +54,7 @@ const router = express.Router()
 // require authorization for all property routes
 router.use(requireAuth)
 
+//router.use('/:id')
 
 //GET ALL properties
 router.get('/',getProperties)

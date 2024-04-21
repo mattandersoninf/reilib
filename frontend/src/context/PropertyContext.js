@@ -10,6 +10,13 @@ export const PropertiesContext = createContext();
 
 export const propertiesReducer = (state, action) => {
     switch (action.type){
+        /*
+        case 'SET_PROPERTY':
+            return{
+                properties: state.properties.children
+            }
+        */
+
         case 'SET_PROPERTIES':
             return {
                 properties: action.payload
@@ -33,6 +40,8 @@ export const PropertiesContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(propertiesReducer, {
         properties: null
     })
+
+    console.log("State:",[state, dispatch]);
 
     return(
         
