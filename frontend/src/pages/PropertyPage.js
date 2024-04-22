@@ -77,7 +77,7 @@ const PropertyPage = ({ children }) => {
         <p><strong>Total Bathrooms: </strong>{
             property.BathroomsTotalDecimal
         }</p>
-        <button onClick={deleteProperty} className="delete">Delete</button>
+        <button onClick={deleteProperty} className="red-btn">Delete</button>
    
     </div>
     );

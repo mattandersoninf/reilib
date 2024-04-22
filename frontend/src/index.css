@@ -163,7 +163,7 @@ nav button{
   cursor: pointer;
 }
 
-.logout{
+.red-btn{
   background: var(--error);
   border: 0;
   color: #fff;

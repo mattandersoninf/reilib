@@ -37,7 +37,7 @@ const Navbar = () => {
                          
                         <Link to="/newProp"><li>Add New Property</li></Link>
 
-                        <button onClick={handleClick} className="logout">Log out</button>
+                        <button onClick={handleClick} className="red-btn">Log out</button>
 
                     </div>
                     
