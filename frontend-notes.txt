@@ -1,0 +1,187 @@
+
+
+
+1. display.js
+    INPUTS
+        Property and Loan Information
+            - Property inforamtion
+                Address ** (StreetNumber, StreetName)
+                City/State/Zip ** (City, StateOrProvince, PostalCode)
+                MLS # ** ( )
+                Square Feet ** (LivingArea)
+                Other Notes (PropertyType)
+            - Purchase inforamtion
+                Purchase Price 
+                Building Cost (ListPrice) **
+                Land Cost (optional)
+                After Renovation Value
+                Annual Property Taxes **
+                Estimated Renovation Costs
+                Amortization Period
+            - Loan Details
+                Cash Purchase? (y/n)
+                Down Payment (as percentage)
+                or- Fixed down payment amount
+                Loan Amount
+                Loan Interest Rate
+                Points Charged by Lender
+                Other Charges From Lender
+                Wrap loan fees/points into loan?
+                Loan Duration (Years)
+            - Closing Costs
+                Prepaid Insurance
+                Prepaid Property Taxes
+                Annual Asmnts, HOA, Etc
+                Title and Escrow Fees
+                Attorney Charges
+                Inspection Cost
+                Recording Fees
+                Appraisal Fee
+                Other Fees/Charges
+                Total
+        Income and Expenses
+            - Total Gross Monthly Income (Market Estimate)
+                Rent
+                Other Income
+                Total
+            -Future Assumptions
+                Rent Escalation (%)	
+                Market Appreciation (%)	
+                Inflation (%)	
+                Property Sale Costs (%)	
+            - Monthly Expenses
+                Electricity
+                Water
+                Sewer
+                Trash
+                HOA
+                Monthly Insurance
+                Property Taxes (calculated) **
+                Other Monthly Expenses
+                Vacancy (%)
+                Repairs and Maintenance (%)
+                CapEx (%)
+                Property Management (%)
+                Total
+            - UNCERTAINTY RANGE (ALL ROUGH PERCENTAGE)
+                Rent Range
+                Vacancy Range
+                Ongoing Repair Costs
+                CapEx
+                Property Management
+    REPORT
+        - (INSERT ADDRESS) FINANCIAL REPORT
+        - PROPERTY Information
+            Address:	
+            City, State, Zip	
+            MLS #	
+        - PURCHASE Information
+            Purchase Price:		
+            Total Purchase Cost:		
+            After Repair Value:		
+            $/SF:		
+            $/Bedroom:		
+        -FINANCING
+            Down Payment:		
+            Loan Amount:		
+            Loan Period (Years):		
+            Loan Interest Rate:		
+            Monthly P&I:		
+            Your Total Upfront Investment:		
+        - YEAR 1 SCENARIOS TABLE
+            -PARAMS 
+                - TIME FRAME (MONTHLY OR ANNUAL)
+                - INCLUDE FINANCING (CHECK BOX)
+            - COLUMN HEADERS
+                Market Case
+                Worst Case
+                Best Case		
+            - ROW HEADERS
+                Cashflow	
+                Income	
+                Expense	
+                Cap Rate	
+                NOI	
+                Cash on Cash ROI	
+                1% Rule	
+                GRM	
+                Rent/SF	
+                Rent/Bedroom	
+        FUTURE PROJECTIONS
+            MARKET CASE
+            ROW HEADERS
+                Year	
+                Total Annual Cash Flow	
+                Annual Income	
+                Total Annual Exp	
+                Operating Exp	
+                P&I	
+                Cash on Cash ROI	
+                Property Value	
+                Equity	
+                Loan Balance	
+                Total Profit if sold	
+                Annualized total return	
+    FUTURE PROJECTIONS CALCULATIONS
+        ROW HEADERS
+            - YEAR Number
+        COLUMN HEADERS  
+            CASH FLOW			
+	            Annual Income		
+	            Expenses		
+		        Operating Expenses	
+		        Principal & Interest	
+			        Principal Paid
+			        Interest Paid
+		            Total P & I	
+	            Total Annual Expenses		
+            Total Annual Cash Flow			
+			
+		    EQUITY & LOAN INFO			
+                Loan Balance		
+                Cumulative P&I		
+                    Cml Principal (Paydown)	
+                    Cml Interest	
+                Total Cumulative P&I		
+            Equity Accrual		
+			
+            TAXABLE NET INCOME			
+                Cash Flow Before Taxes		
+                Add back: Principal Payments		
+                Less: Depreciation Expense		
+            Total Taxable Net Income			
+			
+            PROPERTY METRICS			
+                Cash on Cash ROI		
+                Property Value		
+                Cumulative Depreciation ($)		
+                Cumulative Depreciation (%)		
+                Total Profit if sold		
+                Annualized total return
+    Wealth Creation
+        Wealth Creation
+        Cash Flow			
+        Total Equity Growth			
+        Total Tax Savings	
+        ROW HEADERS
+            Wealth Creation
+            1. Cash Flow		
+                Equity Growth		
+                    Loan Payoff	
+                        Debt Servicing
+                        Accelerated Paydown
+                    Loan Payoff Total	
+                    Appreciation	
+                        Forced Appreciation $
+                        Associated rental % increase
+                        Market Appreciation
+                    Appreciation Total	
+            2.Total Equity Growth		
+                Tax Savings		
+                    Depreciation	
+                    Write offs	
+                    1031 Exchange	
+            3.Total Tax Savings		
+    Comparables
+        (fill in as needed)
+
