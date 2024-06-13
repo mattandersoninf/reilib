@@ -103,7 +103,7 @@ const PropertyDetails = ({property}) => {
 
 const PropertyList = props => {
     return(
-        <ul className='property-list'>
+        <ul className='property-list property-details'>
             {props.properties.map(property =>{
                 return <li><h4>{
                     property.StreetNumber+' '+property.StreetName+', '+property.City+', '+property.StateOrProvince+', '+property.PostalCode

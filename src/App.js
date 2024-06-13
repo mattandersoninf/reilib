@@ -8,6 +8,7 @@ import SignUp from './pages/SignUp';
 import AddNewProperty from './pages/AddNewProperty';
 import PropertyPage from './pages/PropertyPage';
 
+
 function App () {
 
   const { user } = useAuthContext();

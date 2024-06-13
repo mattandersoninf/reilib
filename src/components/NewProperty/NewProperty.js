@@ -1,6 +1,6 @@
 /* NewProperty.js */
 
-const NewProperty = props => {
+const NewProperty = () => {
     let enteredText = '';
 
     const addPropertyHandler = event => {

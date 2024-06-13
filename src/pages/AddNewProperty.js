@@ -2,6 +2,8 @@
 
 import PropertyForm from "../components/PropertyForm";
 
+import NewProperty from "../components/NewProperty";
+
 const AddNewProperty = () =>{
     return (
         <div className="property-details">
