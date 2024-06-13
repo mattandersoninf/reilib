@@ -1,13 +1,12 @@
 /* Add new property page */
 
-import PropertyForm from "../components/PropertyForm";
 
-import NewProperty from "../components/NewProperty";
+import NewProperty from "../components/NewProperty/NewProperty";
 
 const AddNewProperty = () =>{
     return (
         <div className="property-details">
-            <PropertyForm/>
+            <NewProperty/>
         </div>
     );
 }
