@@ -1,12 +1,13 @@
 // home page
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { usePropertiesContext } from "../hooks/usePropertiesContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 
 // components
 import PropertyList from "../components/PropertyList/PropertyList"
+import NewProperty from "../components/NewProperty/NewProperty";
 
 const Home = () => {
 
@@ -14,7 +15,7 @@ const Home = () => {
     const {properties, dispatch} = usePropertiesContext();
     const {user} = useAuthContext();
 
-    const propertyList = [
+    const [propertyList, setPropertyList] = useState ([
         {
             id: 'p1',
             StreetNumber: '99',
@@ -45,7 +46,16 @@ const Home = () => {
             Analyses: '',
             createdAt: '2024-04-20T06:25:22.180+00:00'
         }
-    ]
+    ]);
+
+    const addNewPropertyHandler = (newProperty) => {
+        
+        setPropertyList(prevPropertyList => prevPropertyList.concat(newProperty));
+        /*
+        propertyList.push(newProperty)
+        console.log(propertyList)
+        */
+    };
 
 
     /*
@@ -85,8 +95,8 @@ const Home = () => {
 
     return (
         <div className="home">
+            <NewProperty onAddProperty = {addNewPropertyHandler}/>
             <PropertyList properties = {propertyList}/>
-            
         </div>
     )
 
