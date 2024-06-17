@@ -46,6 +46,8 @@ const NewProperty = props => {
             newLivingArea,
             newBedroomsTotal,
             newBathroomsTotalDecimal,
+            // this is a temp createdAt value since mognoDB autmatically makes this with new entries
+            createdAt:'2024-04-20T06:25:22.180+00:00',
         };
 
         try{

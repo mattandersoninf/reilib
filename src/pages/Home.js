@@ -7,7 +7,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 
 // components
 import PropertyList from "../components/PropertyList/PropertyList"
-import NewProperty from "../components/NewProperty/NewProperty";
+import NewProperty from "../properties/components/NewProperty";
 
 const Home = () => {
 
@@ -51,10 +51,7 @@ const Home = () => {
     const addNewPropertyHandler = (newProperty) => {
         
         setPropertyList(prevPropertyList => prevPropertyList.concat(newProperty));
-        /*
-        propertyList.push(newProperty)
-        console.log(propertyList)
-        */
+        
     };
 
 

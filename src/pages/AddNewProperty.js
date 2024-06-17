@@ -1,7 +1,7 @@
 /* Add new property page */
 
 
-import NewProperty from "../components/NewProperty/NewProperty";
+import NewProperty from "../properties/components/NewProperty";
 
 const AddNewProperty = () =>{
     return (

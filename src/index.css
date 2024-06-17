@@ -197,3 +197,10 @@ form.login, form.signup{
   background: #fff;
   border-radius: 4px;
 }
+
+.center {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

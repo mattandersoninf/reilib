@@ -1,5 +1,5 @@
 /* code block 2 */
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Redirect, Switch } from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -15,39 +15,43 @@ function App () {
 
   return (
     <div className="App">
-      <BrowserRouter>
+      <Router>
        <Navbar/>
           <div className="pages">
             <Routes>
+              <Switch>
+                <Route
+                  path="/" exact
+                  element={user ? <Home/> : <Navigate to="/login"/>
+                  }
+                />
 
-              <Route
-                path="/"
-                element={user ? <Home/> : <Navigate to="/login"/>}
-              />
+                <Route
+                  path="/login"
+                  element={!user ? <LogIn/> : <Navigate to="/"/>}
+                />
+                
+                <Route
+                  path="/signup"
+                  element={!user ? <SignUp/> : <Navigate to="/"/>}
+                />
 
-              <Route
-                path="/login"
-                element={!user ? <LogIn/> : <Navigate to="/"/>}
-              />
-              
-              <Route
-                path="/signup"
-                element={!user ? <SignUp/> : <Navigate to="/"/>}
-              />
+                <Route
+                  path="/newProp"
+                  element={<AddNewProperty/>}
+                />
 
-              <Route
-                path="/newProp"
-                element={<AddNewProperty/>}
-              />
-
-              <Route
-                path="/properties/:propertyID"
-                element={<PropertyPage/>}
-              />
-
+                <Route
+                  path="/properties/:propertyID"
+                  element={<PropertyPage/>}
+                />
+                <Redirect
+                  path = "/"
+                />
+              </Switch>
             </Routes>
           </div>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 };
