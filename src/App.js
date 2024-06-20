@@ -1,5 +1,5 @@
-/* code block 2 */
-import { BrowserRouter as Router, Routes, Route, Navigate, Redirect, Switch } from 'react-router-dom';
+/* App.js */
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -19,7 +19,6 @@ function App () {
        <Navbar/>
           <div className="pages">
             <Routes>
-              <Switch>
                 <Route
                   path="/" exact
                   element={user ? <Home/> : <Navigate to="/login"/>
@@ -45,10 +44,6 @@ function App () {
                   path="/properties/:propertyID"
                   element={<PropertyPage/>}
                 />
-                <Redirect
-                  path = "/"
-                />
-              </Switch>
             </Routes>
           </div>
       </Router>
